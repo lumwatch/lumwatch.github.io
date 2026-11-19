@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Token check · Lumwatch</title>
+<meta name="description" content="Free: check any Robinhood Chain token before you buy. Live reads from the chain and Sourcify.">
+<link rel="canonical" href="https://lumwatch.app/check/">
+<meta property="og:title" content="Token check · Lumwatch">
+<meta property="og:description" content="Free: check any Robinhood Chain token before you buy. Live reads from the chain and Sourcify.">
+<meta property="og:url" content="https://lumwatch.app/check/">
+<meta property="og:image" content="https://lumwatch.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f4ef'/%3E%3Cpath d='M13 29l1.6-16h2.8L19 29z' fill='%23111418'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='%231f5eff'/%3E%3Cpath d='M11.5 9h9L16 4.5z' fill='%23111418'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/extra.css">
+</head>
+<body data-page="check">
+<div class="tokenbar"><div class="wrap">
+  <span><b>$LUM</b> contract on Robinhood Chain: <span class="soon">announced at launch, only on this site</span></span>
+  <span class="sep">·</span>
+  <span class="muted">Our only links are lumwatch.app and the X account listed here.</span>
+</div></div>
+<nav class="top" id="nav"><div class="wrap">
+  <a class="brand" href="/"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#111418"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#1f5eff"/><path d="M11.5 9h9L16 4.5z" fill="#111418"/><path d="M19.5 11l11-4v8z" fill="#1f5eff" opacity=".55"/></svg>Lumwatch</a>
+  <div class="menu" id="menu">
+    <div class="dd"><button type="button" aria-expanded="false">Product</button>
+      <div class="panel">
+        <a href="/shield/"><b>Shield <i>PREVIEW</i></b><span>Turn USDG or ETH into a private balance only you can see.</span></a>
+        <a href="/send/"><b>Private send <i>PREVIEW</i></b><span>Pay any address. Nothing links it back to your wallet.</span></a>
+        <a href="/prove/"><b>Clean proof <i>PREVIEW</i></b><span>Prove your funds are not from a blocked list, without showing which ones are yours.</span></a>
+        <a href="/check/"><b>Token check <i>LIVE</i></b><span>Free: check any Robinhood Chain token before you buy.</span></a>
+      </div></div>
+    <div class="dd"><button type="button" aria-expanded="false">Tools</button>
+      <div class="panel">
+        <a href="/agents/"><b>Agents &amp; CLI</b><span>Private payments from scripts and AI agents. MCP server planned.</span></a>
+        <a href="/how/"><b>How it works</b><span>Shield, prove, relay, deliver. And the clean proof.</span></a>
+      </div></div>
+    <div class="dd"><button type="button" aria-expanded="false">Learn</button>
+      <div class="panel">
+        <a href="/faq/"><b>FAQ</b><span>Privacy, rules, fees and what is live today.</span></a>
+        <a href="/log/"><b>Changelog</b><span>What shipped and what is next.</span></a>
+      </div></div>
+    <a href="/how/">How it works</a>
+    <a href="/faq/">FAQ</a>
+  </div>
+  <div class="navcta">
+    <a class="iconbtn" href="https://github.com/lumwatch" target="_blank" rel="noopener" aria-label="Lumwatch on GitHub"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+    <button class="btn wallet" type="button" id="wallet">Connect wallet</button>
+    <a class="btn primary" href="/app/">Launch app</a>
+    <button class="btn burger" type="button" id="burger" aria-expanded="false">Menu</button>
+  </div>
+</div></nav>
+<main>
+<header class="pagehead"><div class="wrap"><div class="label">Token check · live</div><h1>Check a token before you buy.</h1><p>Paste a contract address. Lumwatch reads it from Robinhood Chain and Sourcify and tells you what it finds, in plain words.</p></div></header>
+<section class="band"><div class="wrap"><div class="app reveal"><div class="appbar"><i></i><i></i><i></i><span class="url">lumwatch.app/check</span><span class="live">live</span></div><div class="solo-wrap"><div class="view solo" id="v-scan">
+        <div class="vh"><h3>Token check</h3><span>live · free · Robinhood Chain + Sourcify</span></div>
+        <form class="scanbar" id="scanform"><label for="ca">Token contract address</label>
+          <input id="ca" type="text" autocomplete="off" spellcheck="false" placeholder="0x… token contract on Robinhood Chain" value="0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168">
+          <button class="btn primary" id="scan" type="submit">Shine the light</button></form>
+        <div class="presets">try: <button type="button" data-ca="0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168">USDG</button><button type="button" data-ca="0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73">WETH</button><button type="button" data-ca="0x000000000000000000000000000000000000dEaD">a wallet, not a token</button></div>
+        <div class="scanner" aria-live="polite"><div class="sweep" aria-hidden="true"></div>
+          <div class="verdict"><div class="lamp" id="lamp" style="--v: var(--warn)"></div><div><h3 id="vtitle" style="--v: var(--warn)">Look closer</h3><p id="vtext">USDG at 0x5fc5…d168: an owner address still controls it; it is an upgradeable proxy, so its code can change. Normal for a regulated stablecoin, and worth knowing before you hold it.</p></div></div>
+          <ul class="checks" id="checks">
+            <li class="ok"><span class="i">✓</span><span class="k">Contract code</span><span class="v">present (170 bytes)</span></li>
+            <li class="ok"><span class="i">✓</span><span class="k">Token basics</span><span class="v">Global Dollar (USDG) · 6 decimals · 627,544,907.12 supply</span></li>
+            <li class="ok"><span class="i">✓</span><span class="k">Source code</span><span class="v">verified on Sourcify (exact match)</span></li>
+            <li class="warn"><span class="i">!</span><span class="k">Owner</span><span class="v">0xcfa0388f5ddf905fdc08c45c716c15dc10a14c6f can still call owner-only functions</span></li>
+            <li class="warn"><span class="i">!</span><span class="k">Upgradeable</span><span class="v">proxy · logic at 0x68184c449e1a8f34fa18d289737129fd27b66f8f can be swapped</span></li>
+            <li class="na"><span class="i">i</span><span class="k">Pons launch</span><span class="v">not launched through Pons V2</span></li>
+            <li class="na"><span class="i">i</span><span class="k">Burned</span><span class="v">8,324.65 at 0x…dEaD (0.00% of supply)</span></li>
+            <li class="na"><span class="i">◌</span><span class="k">Buy and sell-back test</span><span class="v">next watch: a simulated buy and sell to catch hidden taxes</span></li>
+          </ul>
+          <div class="scanfoot" id="scanfoot">Saved example scan, block 117,972,051. Press the button for a live read.</div>
+        </div>
+      </div></div></div></div></section>
+<section class="band"><div class="wrap agents"><div class="reveal"><div class="label">Why it matters</div><h2 class="h2s">Read it before you hold it.</h2><ul class="ticks"><li><div>Live reads <span>· code, source, owner, proxy, Pons launch and burns</span></div></li><li><div>Plain verdicts <span>· Clear, Look closer or Stop, with the reasons</span></div></li><li><div>Read-only <span>· never asks for a key or a signature</span></div></li></ul></div><div class="reveal"><div class="bpterm"><div class="tbar"><span class="dots"><i></i><i></i><i></i></span><div class="ttabs" role="tablist"><button type="button" data-cmd="check" aria-selected="false">check</button><button type="button" data-cmd="shield" aria-selected="false">shield</button><button type="button" data-cmd="send" aria-selected="false">send</button><button type="button" data-cmd="prove" aria-selected="false">prove</button></div><button class="tcopy" type="button" data-copycmd>Copy</button></div><pre aria-live="polite"></pre></div></div></div></section>
+</main>
+<footer><div class="wrap">
+  <div><a class="brand" href="/" style="padding:0"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#111418"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#1f5eff"/><path d="M11.5 9h9L16 4.5z" fill="#111418"/><path d="M19.5 11l11-4v8z" fill="#1f5eff" opacity=".55"/></svg>Lumwatch</a><p class="muted" style="font-size:14px;margin:10px 0 0;max-width:34ch">Private payments on Robinhood Chain that stay provably clean. In development.</p></div>
+  <div><h4>Product</h4><a href="/shield/">Shield</a><a href="/send/">Private send</a><a href="/prove/">Clean proof</a><a href="/check/">Token check</a></div>
+  <div><h4>Tools</h4><a href="/app/">Launch app</a><a href="/agents/">Agents &amp; CLI</a><a href="/how/">How it works</a><a href="https://github.com/lumwatch" target="_blank" rel="noopener">GitHub</a></div>
+  <div><h4>Learn</h4><a href="/faq/">FAQ</a><a href="/log/">Changelog</a></div>
+  <div class="fine"><span>© 2026 Lumwatch · Robinhood Chain mainnet</span><span>Nothing here is financial advice.</span></div>
+</div></footer>
+<script src="/assets/site.js"></script>
+</body>
+</html>

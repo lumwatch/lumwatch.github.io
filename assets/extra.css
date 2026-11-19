@@ -92,3 +92,4 @@ nav.top .btn { font-size: 14px; font-weight: 500; white-space: nowrap; }
 #curtain .w { font-weight: 500; font-size: 40px; }
 p, li { font-weight: 400; }
 @media (max-width: 700px) { .p1 h1 { font-size: clamp(34px, 10vw, 48px); } .p2 h2, .p3 h2 { font-size: clamp(30px, 9vw, 42px); } }
+.tokenbar a { color: var(--fog); text-decoration: underline; text-underline-offset: 3px; }

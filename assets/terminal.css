@@ -1,4 +1,5 @@
 /* Lumwatch terminal: a live Robinhood Chain desk. Uses the site palette tokens from style.css. */
+body[data-page="terminal"] main, body[data-page="home"] main > .tm:first-child { padding-top: 14px; }
 body[data-page="terminal"] main { padding: 0; }
 body[data-page="terminal"] footer { margin-top: 0; }
 .tm { padding: 14px 16px 22px; max-width: 1680px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
@@ -69,3 +70,15 @@ body[data-page="terminal"] footer { margin-top: 0; }
 @media (max-width: 1180px) { .tm-grid { grid-template-columns: minmax(0, 1fr) 300px; } .tm-grid > .tm-actp { grid-column: 1 / -1; } }
 @media (max-width: 760px) { .tm-grid { grid-template-columns: minmax(0, 1fr); } .tm-chart { min-height: 300px; } .tm-wal { grid-template-columns: 1fr; } .tm-big { font-size: 22px; } .tm { padding: 10px 12px 18px; } }
 @media (prefers-reduced-motion: reduce) { .tm-live i, .tm-row.new { animation: none; } }
+
+.tm-pair { flex: none; display: flex; flex-direction: column; gap: 2px; }
+.tm-pair b { font: 600 15px var(--display); color: var(--fog); letter-spacing: -.01em; }
+.tm-pair span { font: 500 10.5px var(--mono); color: var(--mist); text-transform: uppercase; letter-spacing: .08em; }
+.u { color: var(--lamp) !important; } .d { color: var(--danger) !important; }
+.tm-big.u, .tm-big.d { font-weight: 500; }
+.tm-row .s { color: var(--danger); }
+.tm-legend b { font-weight: 500; }
+.tm-chart { overflow: hidden; }
+.tm-legend { right: 84px; flex-wrap: wrap; row-gap: 2px; }
+.tm-panel, .tm-grid > * { min-width: 0; }
+@media (max-width: 760px) { .tm-legend { font-size: 11px; gap: 8px; } }

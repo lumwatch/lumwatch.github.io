@@ -74,3 +74,21 @@ a.bld.link:hover { transform: translateY(-4px); border-color: var(--lamp); box-s
 .btn.console { display: inline-flex; flex-direction: row; align-items: center; white-space: nowrap; }
 .btn.console[aria-current="page"] { border-color: var(--lamp); }
 @media (max-width: 600px) { .navcta .btn.console, .navcta .iconbtn { display: none; } .navcta { gap: 8px; } }
+
+/* ---- Type: Geist, light and compact ---- */
+:root { --display: "Geist", -apple-system, system-ui, sans-serif; --body: "Geist", -apple-system, system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+body { font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { letter-spacing: -.03em; }
+.brand { font: 600 18px var(--display); letter-spacing: -.01em; }
+nav.top .menu > a, nav.top .dd > button { font-size: 14px; font-weight: 400; white-space: nowrap; }
+nav.top .btn { font-size: 14px; font-weight: 500; white-space: nowrap; }
+.p1 h1 { font-weight: 400; font-size: clamp(40px, 5.2vw, 72px); line-height: 1.04; }
+.p2 h2, .p3 h2 { font-weight: 400; font-size: clamp(32px, 4vw, 56px); line-height: 1.06; }
+.head h2, .h2s { font-weight: 400; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.08; }
+.head h2 em, .p1 h1 em, .p2 h2 em, .p3 h2 em, .h2s em { font-style: normal; color: var(--mist); }
+.quay a b { font-weight: 500; font-size: 19px; }
+.vh h3, .verdict h3 { font-weight: 500; font-size: 22px; }
+.tile b { font-weight: 500; font-size: 26px; }
+#curtain .w { font-weight: 500; font-size: 40px; }
+p, li { font-weight: 400; }
+@media (max-width: 700px) { .p1 h1 { font-size: clamp(34px, 10vw, 48px); } .p2 h2, .p3 h2 { font-size: clamp(30px, 9vw, 42px); } }

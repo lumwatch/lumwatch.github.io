@@ -15,7 +15,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Cpath d='M13 29l1.6-16h2.8L19 29z' fill='%23ebecec'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='%2334c77b'/%3E%3Cpath d='M11.5 9h9L16 4.5z' fill='%23ebecec'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/style.css">
 <link rel="stylesheet" href="/assets/extra.css"><link rel="stylesheet" href="/assets/terminal.css">
 </head>
@@ -62,24 +62,26 @@
 <main>
 <div class="tm" id="tm">
   <div class="tm-bar">
-    <div class="tm-mkt" role="group" aria-label="Token"><button type="button" data-mkt="USDG" aria-pressed="true">USDG</button><button type="button" data-mkt="WETH" aria-pressed="false">WETH</button></div>
-    <div class="tm-stat"><span>Transfers in window</span><b class="tm-big" id="tm-big">–</b></div>
+    <div class="tm-pair"><b>ETH / USDG</b><span id="tm-s-pools">pools</span></div>
+    <b class="tm-big" id="tm-big">–</b>
+    <div class="tm-stat"><span>Change</span><b id="tm-s-chg">–</b></div>
+    <div class="tm-stat"><span>High</span><b id="tm-s-hi">–</b></div>
+    <div class="tm-stat"><span>Low</span><b id="tm-s-lo">–</b></div>
     <div class="tm-stat"><span>Volume</span><b id="tm-s-vol">–</b></div>
-    <div class="tm-stat"><span>Senders</span><b id="tm-s-send">–</b></div>
+    <div class="tm-stat"><span>Swaps</span><b id="tm-s-n">–</b></div>
     <div class="tm-stat"><span>Block</span><b id="tm-s-block">–</b></div>
     <div class="tm-stat"><span>Gas</span><b id="tm-s-gas">–</b></div>
-    <div class="tm-stat"><span>Block time</span><b id="tm-s-bt">–</b></div>
     <div class="tm-stat"><span>Window</span><b id="tm-s-win">–</b></div>
     <span class="tm-live" id="tm-live"><i></i> Connecting</span>
   </div>
-  <p class="tm-note">Every number is read live from Robinhood Chain mainnet in your browser. Anyone can see these public transfers; Lumwatch is being built so yours don't have to be. Shield, Send and Prove are previews: nothing is signed here.</p>
+  <p class="tm-note">Candles are built in your browser from every swap in the public WETH/USDG pools on Robinhood Chain mainnet. Anyone can see these trades; Lumwatch is being built so yours don't have to be. Shield, Send and Prove are previews: nothing is signed here.</p>
   <div class="tm-grid">
     <section class="tm-panel" aria-label="Chart">
-      <div class="tm-tabs" role="tablist"><button type="button" role="tab" data-tf="1m" aria-selected="true">1m</button><button type="button" role="tab" data-tf="5m" aria-selected="false">5m</button><button type="button" role="tab" data-tf="15m" aria-selected="false">15m</button><span class="sp"></span><small><span data-mktname>USDG</span> moved per slice · bars: volume · line: transfers</small></div>
-      <div class="tm-chart"><div class="tm-legend"><span><span data-mktname>USDG</span> flow</span><span>vol <b class="v" id="tm-l-vol">–</b></span><span>transfers <b class="n" id="tm-l-n">–</b></span></div><canvas id="tm-cv" aria-label="USDG transfer volume and count over the selected window"></canvas><div class="tm-tip" id="tm-tip"></div><div class="tm-load" id="tm-load">Reading the chain…</div></div>
+      <div class="tm-tabs" role="tablist"><button type="button" role="tab" data-tf="15s" aria-selected="false">15s</button><button type="button" role="tab" data-tf="1m" aria-selected="true">1m</button><button type="button" role="tab" data-tf="5m" aria-selected="false">5m</button><span class="sp"></span><small>ETH price in USDG · from on-chain swaps</small></div>
+      <div class="tm-chart"><div class="tm-legend"><span>ETH/USDG · <span>on-chain</span></span><span>O <b id="tm-o">–</b></span><span>H <b id="tm-h">–</b></span><span>L <b id="tm-l">–</b></span><span>C <b id="tm-c">–</b></span><span>Vol <b id="tm-v">–</b></span><span><b id="tm-n">–</b></span></div><canvas id="tm-cv" aria-label="ETH/USDG candlestick chart from on-chain swaps"></canvas><div class="tm-load" id="tm-load">Reading the chain…</div></div>
     </section>
     <section class="tm-panel" aria-label="Live feed">
-      <div class="tm-tabs" role="tablist"><button type="button" role="tab" data-feed="tx" aria-selected="true">Transfers</button><button type="button" role="tab" data-feed="blk" aria-selected="false">Blocks</button></div>
+      <div class="tm-tabs" role="tablist"><button type="button" role="tab" data-feed="trades" aria-selected="true">Trades</button><button type="button" role="tab" data-feed="blk" aria-selected="false">Blocks</button></div>
       <div class="tm-feedhead" id="tm-fh"></div>
       <div class="tm-feed" id="tm-feed"></div>
     </section>

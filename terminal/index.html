@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Terminal · Lumwatch</title>
+<meta name="description" content="A live Robinhood Chain desk: USDG and WETH flow, transfers and blocks as they land, and a token check. Shield, send and prove as previews.">
+<link rel="canonical" href="https://lumwatch.app/terminal/">
+<meta property="og:title" content="Terminal · Lumwatch">
+<meta property="og:description" content="A live Robinhood Chain desk: USDG and WETH flow, transfers and blocks as they land, and a token check. Shield, send and prove as previews.">
+<meta property="og:url" content="https://lumwatch.app/terminal/">
+<meta property="og:image" content="https://lumwatch.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0c0e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Cpath d='M13 29l1.6-16h2.8L19 29z' fill='%23ebecec'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='%2334c77b'/%3E%3Cpath d='M11.5 9h9L16 4.5z' fill='%23ebecec'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/extra.css"><link rel="stylesheet" href="/assets/terminal.css">
+</head>
+<body data-page="terminal">
+<div class="tokenbar"><div class="wrap">
+  <span><b>$LUM</b> contract on Robinhood Chain: <span class="soon">announced at launch, only on this site</span></span>
+  <span class="sep">·</span>
+  <span class="muted">Our only links are lumwatch.app and the X account listed here.</span>
+</div></div>
+<nav class="top" id="nav"><div class="wrap">
+  <a class="brand" href="/"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#ebecec"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#34c77b"/><path d="M11.5 9h9L16 4.5z" fill="#ebecec"/><path d="M19.5 11l11-4v8z" fill="#34c77b" opacity=".55"/></svg>Lumwatch</a>
+  <div class="menu" id="menu">
+    <div class="dd"><button type="button" aria-expanded="false">Product</button>
+      <div class="panel">
+        <a href="/shield/"><b>Shield <i>PREVIEW</i></b><span>Turn USDG or ETH into a private balance only you can see.</span></a>
+        <a href="/send/"><b>Private send <i>PREVIEW</i></b><span>Pay any address. Nothing links it back to your wallet.</span></a>
+        <a href="/prove/"><b>Clean proof <i>PREVIEW</i></b><span>Prove your funds are not from a blocked list, without showing which ones are yours.</span></a>
+        <a href="/check/"><b>Token check <i>LIVE</i></b><span>Free: check any Robinhood Chain token before you buy.</span></a>
+      </div></div>
+    <div class="dd"><button type="button" aria-expanded="false">Tools</button>
+      <div class="panel">
+        <a href="/terminal/"><b>Terminal <i>LIVE</i></b><span>Live Robinhood Chain desk: USDG and WETH flow, transfers, blocks, token check.</span></a>
+        <a href="/console/"><b>Agent console <i>LIVE</i></b><span>Ask the agent to check a token or read your balance. Shield, send and prove as previews.</span></a>
+        <a href="/agents/"><b>Agents &amp; CLI</b><span>Private payments from scripts and AI agents. MCP server planned.</span></a>
+        <a href="/how/"><b>How it works</b><span>Shield, prove, relay, deliver. And the clean proof.</span></a>
+      </div></div>
+    <div class="dd"><button type="button" aria-expanded="false">Learn</button>
+      <div class="panel">
+        <a href="/faq/"><b>FAQ</b><span>Privacy, rules, fees and what is live today.</span></a>
+        <a href="/log/"><b>Changelog</b><span>What shipped and what is next.</span></a>
+      </div></div>
+    <a href="/terminal/" class="on" aria-current="page">Terminal</a>
+    <a href="/how/">How it works</a>
+    <a href="/faq/">FAQ</a>
+  </div>
+  <div class="navcta">
+    <a class="btn console" href="/console/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l6-5-6-5M12 19h8"/></svg><span>Console</span></a>
+    <a class="iconbtn" href="https://github.com/lumwatch" target="_blank" rel="noopener" aria-label="Lumwatch on GitHub"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+    <button class="btn wallet" type="button" id="wallet">Connect wallet</button>
+    <a class="btn primary" href="/app/">Launch app</a>
+    <button class="btn burger" type="button" id="burger" aria-expanded="false">Menu</button>
+  </div>
+</div></nav>
+<main>
+<div class="tm" id="tm">
+  <div class="tm-bar">
+    <div class="tm-mkt" role="group" aria-label="Token"><button type="button" data-mkt="USDG" aria-pressed="true">USDG</button><button type="button" data-mkt="WETH" aria-pressed="false">WETH</button></div>
+    <div class="tm-stat"><span>Transfers in window</span><b class="tm-big" id="tm-big">–</b></div>
+    <div class="tm-stat"><span>Volume</span><b id="tm-s-vol">–</b></div>
+    <div class="tm-stat"><span>Senders</span><b id="tm-s-send">–</b></div>
+    <div class="tm-stat"><span>Block</span><b id="tm-s-block">–</b></div>
+    <div class="tm-stat"><span>Gas</span><b id="tm-s-gas">–</b></div>
+    <div class="tm-stat"><span>Block time</span><b id="tm-s-bt">–</b></div>
+    <div class="tm-stat"><span>Window</span><b id="tm-s-win">–</b></div>
+    <span class="tm-live" id="tm-live"><i></i> Connecting</span>
+  </div>
+  <p class="tm-note">Every number is read live from Robinhood Chain mainnet in your browser. Anyone can see these public transfers; Lumwatch is being built so yours don't have to be. Shield, Send and Prove are previews: nothing is signed here.</p>
+  <div class="tm-grid">
+    <section class="tm-panel" aria-label="Chart">
+      <div class="tm-tabs" role="tablist"><button type="button" role="tab" data-tf="1m" aria-selected="true">1m</button><button type="button" role="tab" data-tf="5m" aria-selected="false">5m</button><button type="button" role="tab" data-tf="15m" aria-selected="false">15m</button><span class="sp"></span><small><span data-mktname>USDG</span> moved per slice · bars: volume · line: transfers</small></div>
+      <div class="tm-chart"><div class="tm-legend"><span><span data-mktname>USDG</span> flow</span><span>vol <b class="v" id="tm-l-vol">–</b></span><span>transfers <b class="n" id="tm-l-n">–</b></span></div><canvas id="tm-cv" aria-label="USDG transfer volume and count over the selected window"></canvas><div class="tm-tip" id="tm-tip"></div><div class="tm-load" id="tm-load">Reading the chain…</div></div>
+    </section>
+    <section class="tm-panel" aria-label="Live feed">
+      <div class="tm-tabs" role="tablist"><button type="button" role="tab" data-feed="tx" aria-selected="true">Transfers</button><button type="button" role="tab" data-feed="blk" aria-selected="false">Blocks</button></div>
+      <div class="tm-feedhead" id="tm-fh"></div>
+      <div class="tm-feed" id="tm-feed"></div>
+    </section>
+    <section class="tm-panel tm-actp" aria-label="Actions">
+      <div class="tm-act">
+        <div class="tm-seg" role="group" aria-label="Action"><button type="button" data-act="shield" aria-pressed="true">Shield<i>PREVIEW</i></button><button type="button" data-act="send" aria-pressed="false">Send<i>PREVIEW</i></button><button type="button" data-act="prove" aria-pressed="false">Prove<i>PREVIEW</i></button><button type="button" class="live" data-act="check" aria-pressed="false">Check<i>LIVE</i></button></div>
+        <div data-actpane="shield" class="tm-act" style="padding:0">
+          <p class="tm-small">Move public USDG or ETH into a private balance only you can see.</p>
+          <label>Amount<input inputmode="decimal" placeholder="100" aria-label="Amount to shield"></label>
+          <label>Token<select aria-label="Token to shield"><option>USDG</option><option>ETH</option></select></label>
+          <div class="tm-kv"><span>Network fee now (a token transfer)</span><b id="tm-fee">–</b></div>
+          <button class="tm-go" type="button" disabled>Shield · in development</button>
+          <p class="tm-small"><span class="tm-badge pv">PREVIEW</span> Nothing is signed or sent from this page.</p>
+        </div>
+        <div data-actpane="send" class="tm-act" style="padding:0" hidden>
+          <p class="tm-small">Pay any address from your private balance. Nothing links it back to your wallet.</p>
+          <label>To<input placeholder="0x…" aria-label="Recipient"></label>
+          <label>Amount<input inputmode="decimal" placeholder="25" aria-label="Amount to send"></label>
+          <button class="tm-go" type="button" disabled>Send privately · in development</button>
+          <p class="tm-small"><span class="tm-badge pv">PREVIEW</span> Nothing is signed or sent from this page.</p>
+        </div>
+        <div data-actpane="prove" class="tm-act" style="padding:0" hidden>
+          <p class="tm-small">Prove your funds are not from a public block list, without showing which deposits are yours.</p>
+          <button class="tm-go" type="button" disabled>Make a clean proof · in development</button>
+          <p class="tm-small"><span class="tm-badge pv">PREVIEW</span> Nothing is signed or sent from this page.</p>
+        </div>
+        <div data-actpane="check" class="tm-act" style="padding:0" hidden>
+          <p class="tm-small">Check any Robinhood Chain token before you buy. Read live from the chain and Sourcify.</p>
+          <form id="tm-checkform" class="tm-act" style="padding:0"><label>Token address<input id="tm-checkaddr" placeholder="0x…" autocomplete="off" spellcheck="false"></label><button class="tm-go" type="submit">Check token</button></form>
+          <ul class="tm-checks" id="tm-checkout" aria-live="polite"></ul>
+          <p class="tm-small"><span class="tm-badge lv">LIVE</span> Read-only. Full report on the <a href="/check/">Token check</a> page.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <section class="tm-panel tm-bottom" aria-label="Your account">
+    <div class="tm-tabs" role="tablist"><button type="button" role="tab" data-btab="mine" aria-selected="true">Your wallet</button><button type="button" role="tab" data-btab="notes" aria-selected="false">Private balance</button><button type="button" role="tab" data-btab="agent" aria-selected="false">Agent console</button></div>
+    <div class="tm-pane" data-bpane="mine" id="tm-mine"></div>
+    <div class="tm-pane" data-bpane="notes" hidden><div class="tm-empty"><p style="margin:0">Your private balance will show here once Shield ships. <span class="tm-badge pv">PREVIEW</span></p></div></div>
+    <div class="tm-pane" data-bpane="agent" hidden><div class="tm-empty"><p style="margin:0">Ask the Lumwatch agent to check a token or read your balance, in plain words.</p><a class="tm-btn" href="/console/">Open the agent console</a></div></div>
+  </section>
+</div>
+</main>
+<footer><div class="wrap">
+  <div><a class="brand" href="/" style="padding:0"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#ebecec"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#34c77b"/><path d="M11.5 9h9L16 4.5z" fill="#ebecec"/><path d="M19.5 11l11-4v8z" fill="#34c77b" opacity=".55"/></svg>Lumwatch</a><p class="muted" style="font-size:14px;margin:10px 0 0;max-width:34ch">Private payments on Robinhood Chain that stay provably clean. In development.</p></div>
+  <div><h4>Product</h4><a href="/shield/">Shield</a><a href="/send/">Private send</a><a href="/prove/">Clean proof</a><a href="/check/">Token check</a></div>
+  <div><h4>Tools</h4><a href="/terminal/">Terminal</a><a href="/app/">Launch app</a><a href="/console/">Agent console</a><a href="/agents/">Agents &amp; CLI</a><a href="/how/">How it works</a><a href="https://github.com/lumwatch" target="_blank" rel="noopener">GitHub</a></div>
+  <div><h4>Learn</h4><a href="/faq/">FAQ</a><a href="/log/">Changelog</a></div>
+  <div class="fine"><span>© 2026 Lumwatch · Robinhood Chain mainnet</span><span>Nothing here is financial advice.</span></div>
+</div></footer>
+<script src="/assets/site.js"></script><script src="/assets/terminal.js"></script>
+</body>
+</html>

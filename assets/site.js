@@ -36,6 +36,7 @@
   }
   function setAccount(a) {
     account = a || null;
+    window.lwAccount = account; window.dispatchEvent(new CustomEvent("lw:account", { detail: account }));
     if (wbtn) { wbtn.textContent = account ? shortA(account) : "Connect wallet"; wbtn.classList.toggle("on", !!account); }
     showBalances();
   }

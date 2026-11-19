@@ -13,7 +13,7 @@
   const POOLS = ["0x52e65b17fb6e5ba00ed806f37afcd2daa50271ca", "0x7615926023bb149f36095645c2a81dc367d39750", "0xfae65eaa11943f45e83d5b45dc7a7c801c51bfb0", "0x16679e2ac1a798865ecf1c1639e67693ddb1c220"];
   const WETH = "0x0bd7d308f8e1639fab988df18a8011f41eacad73", USDG = "0x5fc5360d0400a0fd4f2af552add042d716f1d168";
   const TF = { "15s": 15, "1m": 60, "5m": 300 };
-  const CANDLES = 60, CHUNK = 9000, POLL_MS = 3000;
+  const CANDLES = 60, CHUNK = 3000, POLL_MS = 3000;
   const $ = (id) => document.getElementById(id);
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const short = (a) => a.slice(0, 6) + "…" + a.slice(-4);
@@ -66,17 +66,28 @@
     const a0 = signed(d.slice(0, 64)), a1 = signed(d.slice(64, 128)), q = Number(BigInt("0x" + d.slice(128, 192))) / 2 ** 96;
     return { b: hexN(l.blockNumber), i: hexN(l.logIndex), p: q * q * 1e12, eth: Math.abs(Number(a0)) / 1e18, usd: Math.abs(Number(a1)) / 1e6, buy: a0 < 0n, to: "0x" + l.topics[2].slice(26), tx: l.transactionHash };
   }
+  // One eth_getLogs call; if the RPC says the range holds too many logs, split it in half and try each half.
+  async function logsIn(a, b) {
+    try { return await rpc("eth_getLogs", [{ address: pools, topics: [SWAP], fromBlock: "0x" + a.toString(16), toBlock: "0x" + b.toString(16) }]); }
+    catch (e) {
+      if (!/exceeds limit|too many|query returned more|limit of/i.test(e.message) || b <= a) throw e;
+      const mid = Math.floor((a + b) / 2);
+      const [x, y] = [await logsIn(a, mid), await logsIn(mid + 1, b)];
+      return x.concat(y);
+    }
+  }
   async function getSwaps(from, to, progress) {
     const ranges = [];
     for (let a = from; a <= to; a += CHUNK) ranges.push([a, Math.min(to, a + CHUNK - 1)]);
     const out = []; let done = 0;
     for (let k = 0; k < ranges.length; k += 2) {
-      const part = await Promise.all(ranges.slice(k, k + 2).map(([a, b]) => rpc("eth_getLogs", [{ address: pools, topics: [SWAP], fromBlock: "0x" + a.toString(16), toBlock: "0x" + b.toString(16) }])));
+      const part = await Promise.all(ranges.slice(k, k + 2).map(([a, b]) => logsIn(a, b)));
       for (const r of part) for (const l of r) out.push(decode(l));
       done += part.length; if (progress) progress(done, ranges.length);
     }
     return out.sort((x, y) => x.b - y.b || x.i - y.i);
   }
+
 
   async function load() {
     if (loading) return; loading = true;

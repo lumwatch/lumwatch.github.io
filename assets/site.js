@@ -74,12 +74,12 @@
     const ph = p < .33 ? 0 : p < .7 ? 1 : 2;
     if (ph !== lastPhase) { phases.forEach((el, i) => el.classList.toggle("off", i !== ph)); dots.forEach((d, i) => d.classList.toggle("on", i === ph)); lastPhase = ph; }
     const horizon = H * (.64 + p * .06);
-    const g = cx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#dfe9f8"); g.addColorStop(horizon / H, "#f6f4ef"); g.addColorStop(Math.min(1, horizon / H + .002), "#cddcf2"); g.addColorStop(1, "#e9eff8");
+    const g = cx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#050607"); g.addColorStop(horizon / H, "#121316"); g.addColorStop(Math.min(1, horizon / H + .002), "#0e0f11"); g.addColorStop(1, "#0b0c0e");
     cx.fillStyle = g; cx.fillRect(0, 0, W, H);
-    for (const s of stars) { if (s.r < 1.1) continue; cx.globalAlpha = .18 + .1 * Math.sin(t / 1400 + s.p); cx.fillStyle = "#ffffff"; cx.beginPath(); cx.ellipse((s.x + t / 60 * s.r) % (W + 120) - 60, s.y * .7 - p * 60, 40 * s.r, 9 * s.r, 0, 0, 7); cx.fill(); }
+    for (const s of stars) { cx.globalAlpha = .25 + .35 * Math.sin(t / 900 + s.p); cx.fillStyle = "#ebecec"; cx.beginPath(); cx.arc(s.x, s.y - p * 80, s.r * .8, 0, 7); cx.fill(); }
     cx.globalAlpha = 1;
     // moon
-    const sun = cx.createRadialGradient(W * .2, H * .26 - p * 60, 10, W * .2, H * .26 - p * 60, 180); sun.addColorStop(0, "rgba(255,214,150,.75)"); sun.addColorStop(1, "rgba(255,214,150,0)"); cx.fillStyle = sun; cx.fillRect(0, 0, W, H);
+    const sun = cx.createRadialGradient(W * .2, H * .26 - p * 60, 10, W * .2, H * .26 - p * 60, 180); sun.addColorStop(0, "rgba(235,236,236,.06)"); sun.addColorStop(1, "rgba(235,236,236,0)"); cx.fillStyle = sun; cx.fillRect(0, 0, W, H);
     // lighthouse: grows and centres as you sail in
     const narrow = W < 700; const scale = narrow ? .55 + p * .25 : 1 + p * 1.1, lx = W * (narrow ? .9 : .88 - p * .06), towerH = Math.min(280, H * .42) * scale; cx.globalAlpha = narrow ? .55 : 1;
     const top = horizon - towerH, wB = 30 * scale, wT = 16 * scale;
@@ -89,18 +89,18 @@
     gr.addColorStop(0, hexA(beam, .32 * (.3 + .7 * face))); gr.addColorStop(1, hexA(beam, 0));
     cx.fillStyle = gr; cx.beginPath(); cx.moveTo(lx, by); cx.arc(lx, by, len, ang - spread, ang + spread); cx.closePath(); cx.fill();
     // water lines + reflection
-    for (let k = 0; k < 18; k++) { const y = horizon + 6 + k * k * 1.6; if (y > H) break; cx.strokeStyle = `rgba(31,94,255,${.14 - k * .006})`; cx.beginPath(); for (let x = 0; x <= W; x += 24) cx.lineTo(x, y + Math.sin(x / 60 + t / 700 + k) * (1 + k * .2)); cx.stroke(); }
+    for (let k = 0; k < 18; k++) { const y = horizon + 6 + k * k * 1.6; if (y > H) break; cx.strokeStyle = `rgba(235,236,236,${.06 - k * .003})`; cx.beginPath(); for (let x = 0; x <= W; x += 24) cx.lineTo(x, y + Math.sin(x / 60 + t / 700 + k) * (1 + k * .2)); cx.stroke(); }
     const rg = cx.createLinearGradient(lx, horizon, lx, H); rg.addColorStop(0, hexA(beam, .18 * face + .04)); rg.addColorStop(1, hexA(beam, 0));
     cx.fillStyle = rg; cx.fillRect(lx - 16 * scale, horizon, 32 * scale, H - horizon);
-    cx.fillStyle = "#ffffff"; cx.strokeStyle = "#111418"; cx.lineWidth = 1.5; cx.beginPath(); cx.moveTo(lx - wB, horizon); cx.lineTo(lx - wT, top + 30 * scale); cx.lineTo(lx + wT, top + 30 * scale); cx.lineTo(lx + wB, horizon); cx.fill(); cx.stroke();
-    cx.fillStyle = "#d23b2b"; for (let k = 1; k < 4; k++) { const yy = horizon - k * (horizon - top - 30 * scale) / 4, ww = wB - (wB - wT) * k / 4; cx.fillRect(lx - ww, yy, ww * 2, 8 * scale); }
+    cx.fillStyle = "#ebecec"; cx.strokeStyle = "#0b0c0e"; cx.lineWidth = 1; cx.beginPath(); cx.moveTo(lx - wB, horizon); cx.lineTo(lx - wT, top + 30 * scale); cx.lineTo(lx + wT, top + 30 * scale); cx.lineTo(lx + wB, horizon); cx.fill(); cx.stroke();
+    cx.fillStyle = "#2a2b2f"; for (let k = 1; k < 4; k++) { const yy = horizon - k * (horizon - top - 30 * scale) / 4, ww = wB - (wB - wT) * k / 4; cx.fillRect(lx - ww, yy, ww * 2, 8 * scale); }
     cx.fillStyle = beam; cx.shadowColor = beam; cx.shadowBlur = 30 * (.4 + face); cx.fillRect(lx - 11 * scale, top + 10 * scale, 22 * scale, 18 * scale); cx.shadowBlur = 0;
-    cx.fillStyle = "#111418"; cx.beginPath(); cx.moveTo(lx - 15 * scale, top + 10 * scale); cx.lineTo(lx, top - 6 * scale); cx.lineTo(lx + 15 * scale, top + 10 * scale); cx.fill();
+    cx.fillStyle = "#ebecec"; cx.beginPath(); cx.moveTo(lx - 15 * scale, top + 10 * scale); cx.lineTo(lx, top - 6 * scale); cx.lineTo(lx + 15 * scale, top + 10 * scale); cx.fill();
     cx.globalAlpha = 1;
     // the quay with three lit buildings appears in the last phase
     const q = Math.max(0, (p - .6) / .4);
-    if (q > 0) { cx.globalAlpha = q; cx.fillStyle = "#c9c2b4"; cx.fillRect(0, horizon - 8, W * .55, 8);
-      [[.08, 60, 40], [.22, 80, 54], [.38, 70, 46]].forEach(([fx, bh, bw]) => { const x = W * fx; cx.fillStyle = "#ffffff"; cx.strokeStyle = "#111418"; cx.lineWidth = 1.5; cx.strokeRect(x, horizon - 8 - bh, bw, bh); cx.fillRect(x, horizon - 8 - bh, bw, bh); cx.fillStyle = hexA(COL.lamp, .8); for (let r = 0; r < 3; r++) cx.fillRect(x + 8 + r * (bw - 16) / 3, horizon - bh + 4, 6, 8); });
+    if (q > 0) { cx.globalAlpha = q; cx.fillStyle = "#17181a"; cx.fillRect(0, horizon - 8, W * .55, 8);
+      [[.08, 60, 40], [.22, 80, 54], [.38, 70, 46]].forEach(([fx, bh, bw]) => { const x = W * fx; cx.fillStyle = "#17181a"; cx.strokeStyle = "#2a2b2f"; cx.lineWidth = 1.5; cx.strokeRect(x, horizon - 8 - bh, bw, bh); cx.fillRect(x, horizon - 8 - bh, bw, bh); cx.fillStyle = hexA(COL.lamp, .8); for (let r = 0; r < 3; r++) cx.fillRect(x + 8 + r * (bw - 16) / 3, horizon - bh + 4, 6, 8); });
       cx.globalAlpha = 1; }
     if (!still) requestAnimationFrame(draw);
   }
@@ -170,25 +170,25 @@
   function scene(t) {
     for (const c of scenes) {
       const x = c.getContext("2d"), w = c._w, h = c._h; x.clearRect(0, 0, w, h);
-      x.fillStyle = "#eef1f6"; x.fillRect(0, 0, w, h);
+      x.fillStyle = "#0e0f11"; x.fillRect(0, 0, w, h);
       if (c.dataset.scene === "light") {
-        const rows = 6; for (let r = 0; r < rows; r++) { const y = 26 + r * 26; x.fillStyle = "#ffffff"; x.fillRect(30, y, w - 60, 16); }
-        const sx = 30 + ((t / 18) % (w - 60)); const gg = x.createLinearGradient(sx - 60, 0, sx + 10, 0); gg.addColorStop(0, "rgba(31,94,255,0)"); gg.addColorStop(1, "rgba(31,94,255,.3)");
+        const rows = 6; for (let r = 0; r < rows; r++) { const y = 26 + r * 26; x.fillStyle = "#1b1b1d"; x.fillRect(30, y, w - 60, 16); }
+        const sx = 30 + ((t / 18) % (w - 60)); const gg = x.createLinearGradient(sx - 60, 0, sx + 10, 0); gg.addColorStop(0, "rgba(52,199,123,0)"); gg.addColorStop(1, "rgba(52,199,123,.3)");
         x.fillStyle = gg; x.fillRect(sx - 60, 18, 70, rows * 26); x.fillStyle = COL.lamp; x.fillRect(sx, 18, 2, rows * 26);
         for (let r = 0; r < rows; r++) { const y = 26 + r * 26; if (sx > w - 70) { x.fillStyle = [COL.ok, COL.ok, COL.warn, COL.ok, COL.warn, COL.ok][r]; x.beginPath(); x.arc(w - 46, y + 8, 5, 0, 7); x.fill(); } }
       } else if (c.dataset.scene === "market") {
-        const n = 4, gap = (w - 60) / (n - 1); for (let i = 0; i < n; i++) { const cxp = 30 + i * gap; x.fillStyle = "#ffffff"; x.fillRect(cxp - 22, h - 70, 44, 40); x.fillStyle = "#c9d6ee"; x.beginPath(); x.moveTo(cxp - 28, h - 70); x.lineTo(cxp, h - 92); x.lineTo(cxp + 28, h - 70); x.fill(); }
+        const n = 4, gap = (w - 60) / (n - 1); for (let i = 0; i < n; i++) { const cxp = 30 + i * gap; x.fillStyle = "#1b1b1d"; x.fillRect(cxp - 22, h - 70, 44, 40); x.fillStyle = "#2a2b2f"; x.beginPath(); x.moveTo(cxp - 28, h - 70); x.lineTo(cxp, h - 92); x.lineTo(cxp + 28, h - 70); x.fill(); }
         const ph = (t / 1100) % n, i = Math.floor(ph), f = ph - i, from = 30 + i * gap, to = 30 + Math.min(n - 1, i + 1) * gap;
         const px = i < n - 1 ? from + (to - from) * f : to, py = h - 110 - Math.sin(f * Math.PI) * 30;
         x.fillStyle = COL.lamp; x.shadowColor = COL.lamp; x.shadowBlur = 16; x.beginPath(); x.arc(px, py, 8, 0, 7); x.fill(); x.shadowBlur = 0;
-        x.fillStyle = "#5d6573"; x.font = "11px JetBrains Mono, monospace"; ["prove", "relay", "deliver", "change"].forEach((l, k) => { x.textAlign = "center"; x.fillText(l, 30 + k * gap, h - 14); });
+        x.fillStyle = "#6e7074"; x.font = "11px JetBrains Mono, monospace"; ["prove", "relay", "deliver", "change"].forEach((l, k) => { x.textAlign = "center"; x.fillText(l, 30 + k * gap, h - 14); });
       } else {
         const sw = Math.min(110, w * .35), sx0 = w / 2 - sw / 2, top = 30, bot = h - 20;
         const lvl = ((t / 60) % 100) / 100, fy = bot - (bot - top - 20) * lvl;
-        x.fillStyle = "#ffffff"; x.fillRect(sx0, top + 20, sw, bot - top - 20); x.beginPath(); x.moveTo(sx0 - 6, top + 20); x.lineTo(w / 2, top - 4); x.lineTo(sx0 + sw + 6, top + 20); x.fill();
-        x.fillStyle = "rgba(31,94,255,.75)"; x.fillRect(sx0 + 4, fy, sw - 8, bot - fy);
+        x.fillStyle = "#1b1b1d"; x.fillRect(sx0, top + 20, sw, bot - top - 20); x.beginPath(); x.moveTo(sx0 - 6, top + 20); x.lineTo(w / 2, top - 4); x.lineTo(sx0 + sw + 6, top + 20); x.fill();
+        x.fillStyle = "rgba(52,199,123,.7)"; x.fillRect(sx0 + 4, fy, sw - 8, bot - fy);
         for (const gpt of grains) { gpt.y += gpt.v * .012; if (gpt.y > 1) { gpt.y = 0; gpt.x = Math.random(); } const gx = sx0 + 8 + gpt.x * (sw - 16), gy = top + 20 + gpt.y * (fy - top - 20); x.fillStyle = COL.lamp; x.fillRect(gx, gy, 3, 3); }
-        x.fillStyle = "#5d6573"; x.font = "11px JetBrains Mono, monospace"; x.textAlign = "left"; x.fillText(`pool · ${Math.round(lvl * 4821)} notes`, 12, 18);
+        x.fillStyle = "#6e7074"; x.font = "11px JetBrains Mono, monospace"; x.textAlign = "left"; x.fillText(`pool · ${Math.round(lvl * 4821)} notes`, 12, 18);
       }
     }
     if (!still) requestAnimationFrame(scene);
@@ -334,4 +334,71 @@
   document.querySelectorAll("[data-ca]").forEach((b) => b.addEventListener("click", () => { $("ca").value = b.dataset.ca; $("scanform").requestSubmit(); }));
 
 
+
+  // ---- agent console: talk to the Lumwatch agent. check and balance are live; shield, send and prove are previews ----
+  const clog = document.getElementById("clog"), cform = document.getElementById("cform"), cin = document.getElementById("cin");
+  if (clog && cform && cin) {
+    const TOKENS = { usdg: "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168", weth: "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73" };
+    const sleepMs = (ms) => new Promise((r) => setTimeout(r, still ? 0 : ms));
+    function line(cls, text) { const d = document.createElement("div"); d.className = "cl " + cls; d.textContent = text; clog.append(d); clog.scrollTop = clog.scrollHeight; return d; }
+    async function think() { const d = line("think", "agent is thinking"); await sleepMs(500); d.remove(); }
+    async function tool(name, args) { line("tool", `→ ${name}(${args})`); await sleepMs(450); }
+    const HELP = ["check <token address | USDG | WETH>   live · reads Robinhood Chain and Sourcify", "balance                               live · your connected wallet on Robinhood Chain", "shield <amount> USDG                  preview · walkthrough, nothing is signed", "send <amount> USDG to <address>       preview · walkthrough, nothing is signed", "prove                                 preview · clean proof walkthrough"];
+    async function run(raw) {
+      const q = raw.trim(); if (!q) return;
+      line("you", q); cin.value = ""; cin.disabled = true;
+      const low = q.toLowerCase();
+      try {
+        await think();
+        const addr = (q.match(/0x[0-9a-fA-F]{40}/) || [])[0] || (/\busdg\b/.test(low) && /check|scan|safe|token/.test(low) ? TOKENS.usdg : null) || (/\bweth\b/.test(low) && /check|scan|safe|token/.test(low) ? TOKENS.weth : null);
+        if (/^(help|\?)$|what can you do/.test(low)) { line("agent", "Here is what I can do:"); HELP.forEach((h) => line("mono", "  " + h)); }
+        else if (/check|scan|is .* safe|token/.test(low) && addr) {
+          await tool("lumwatch.check_token", addr.slice(0, 6) + "…" + addr.slice(-4));
+          let v; try { v = await scan(addr); } catch { v = null; }
+          if (!v) { line("warn", "I couldn't reach Robinhood Chain from this page. Try again on lumwatch.app."); }
+          else {
+            line(v.level === "ok" ? "ok" : v.level === "bad" ? "bad" : "warn", { ok: "Clear", warn: "Look closer", bad: "Stop" }[v.level] + " · " + v.text);
+            v.rows.forEach(([c, k, val]) => line("mono " + c, `  ${{ ok: "✓", warn: "!", bad: "✕", na: "·" }[c]} ${k}: ${val}`));
+            line("dim", v.foot);
+          }
+        }
+        else if (/check|scan|token/.test(low)) { line("agent", "Give me a token contract address (0x…), or say check USDG or check WETH."); }
+        else if (/balance|wallet|how much/.test(low)) {
+          await tool("lumwatch.wallet_balance", account ? account.slice(0, 6) + "…" + account.slice(-4) : "no wallet");
+          if (!account) { line("agent", "Connect a wallet first (top right), then ask again."); }
+          else {
+            try {
+              const pad = account.slice(2).toLowerCase().padStart(64, "0");
+              const [eth, usdg] = await Promise.all([window.ethereum.request({ method: "eth_getBalance", params: [account, "latest"] }), window.ethereum.request({ method: "eth_call", params: [{ to: TOKENS.usdg, data: "0x70a08231" + pad }, "latest"] })]);
+              const f = (v, d, k) => { const s = BigInt(v).toString().padStart(d + 1, "0"); return Number(s.slice(0, -d)).toLocaleString("en-US") + "." + s.slice(-d).slice(0, k); };
+              line("ok", `Public balance on Robinhood Chain: ${f(eth, 18, 4)} ETH · ${f(usdg, 6, 2)} USDG`);
+              line("dim", "Anyone can see this. Shielding would move it into a private balance (in development).");
+            } catch { line("warn", "Your wallet answered with an error. Switch it to Robinhood Chain and ask again."); }
+          }
+        }
+        else if (/shield|deposit|go private/.test(low)) {
+          const amt = (low.match(/(\d+(?:\.\d+)?)/) || [])[1] || "100";
+          await tool("lumwatch.shield", `${amt} USDG`);
+          for (const [c, t] of [["mono g", "  ✓ approve  exactly " + amt + " USDG · one signature"], ["mono g", "  ✓ seal     note built on this device"], ["mono g", "  ✓ commit   hash added to the pool"], ["ok", `Private balance +${amt} USDG`]]) { line(c, t); await sleepMs(380); }
+          line("dim", "Preview: contracts in development. Nothing was signed or sent.");
+        }
+        else if (/send|pay|transfer/.test(low)) {
+          const amt = (low.match(/(\d+(?:\.\d+)?)/) || [])[1] || "25";
+          const to = addr ? addr.slice(0, 6) + "…" + addr.slice(-4) : "0x9f3c…41e7";
+          await tool("lumwatch.private_send", `${amt} USDG → ${to}`);
+          for (const [c, t] of [["mono g", "  ✓ proof   groth16 · built on this device · 1.4 s"], ["mono g", "  ✓ relay   gas paid by the relayer"], ["mono g", `  ✓ deliver ${amt} USDG to ${to}`], ["ok", "Sent privately · nothing on-chain links it to your wallet"]]) { line(c, t); await sleepMs(380); }
+          line("dim", "Preview: contracts in development. Nothing was signed or sent.");
+        }
+        else if (/prove|clean|proof|compliance/.test(low)) {
+          await tool("lumwatch.clean_proof", "public-blocklist");
+          for (const [c, t] of [["mono g", "  ✓ list    public block list · Nov 2026"], ["mono g", "  ✓ proof   built on this device · 2.1 s"], ["ok", "Clean · your deposit is not in the list, and your history stays private"]]) { line(c, t); await sleepMs(380); }
+          line("dim", "Preview: contracts in development. No proof was made.");
+        }
+        else { line("agent", "I can check a token, read your balance, or walk you through shield, send and prove. Type help to see the commands."); }
+      } finally { cin.disabled = false; cin.focus({ preventScroll: true }); }
+    }
+    cform.addEventListener("submit", (e) => { e.preventDefault(); run(cin.value); });
+    document.querySelectorAll("[data-ask]").forEach((b) => b.addEventListener("click", () => run(b.dataset.ask)));
+    line("agent", "Hi, I'm the Lumwatch agent. Ask me to check a token, read your balance, or try shield, send and prove. Type help for the list.");
+  }
 })();

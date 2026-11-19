@@ -11,11 +11,11 @@
 <meta property="og:url" content="https://lumwatch.app/">
 <meta property="og:image" content="https://lumwatch.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f6f4ef">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f4ef'/%3E%3Cpath d='M13 29l1.6-16h2.8L19 29z' fill='%23111418'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='%231f5eff'/%3E%3Cpath d='M11.5 9h9L16 4.5z' fill='%23111418'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0b0c0e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Cpath d='M13 29l1.6-16h2.8L19 29z' fill='%23ebecec'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='%2334c77b'/%3E%3Cpath d='M11.5 9h9L16 4.5z' fill='%23ebecec'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/style.css">
 <link rel="stylesheet" href="/assets/extra.css">
 </head>
@@ -26,7 +26,7 @@
   <span class="muted">Our only links are lumwatch.app and the X account listed here.</span>
 </div></div>
 <nav class="top" id="nav"><div class="wrap">
-  <a class="brand" href="/"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#111418"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#1f5eff"/><path d="M11.5 9h9L16 4.5z" fill="#111418"/><path d="M19.5 11l11-4v8z" fill="#1f5eff" opacity=".55"/></svg>Lumwatch</a>
+  <a class="brand" href="/"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#ebecec"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#34c77b"/><path d="M11.5 9h9L16 4.5z" fill="#ebecec"/><path d="M19.5 11l11-4v8z" fill="#34c77b" opacity=".55"/></svg>Lumwatch</a>
   <div class="menu" id="menu">
     <div class="dd"><button type="button" aria-expanded="false">Product</button>
       <div class="panel">
@@ -37,6 +37,7 @@
       </div></div>
     <div class="dd"><button type="button" aria-expanded="false">Tools</button>
       <div class="panel">
+        <a href="/console/"><b>Agent console <i>LIVE</i></b><span>Ask the agent to check a token or read your balance. Shield, send and prove as previews.</span></a>
         <a href="/agents/"><b>Agents &amp; CLI</b><span>Private payments from scripts and AI agents. MCP server planned.</span></a>
         <a href="/how/"><b>How it works</b><span>Shield, prove, relay, deliver. And the clean proof.</span></a>
       </div></div>
@@ -49,6 +50,7 @@
     <a href="/faq/">FAQ</a>
   </div>
   <div class="navcta">
+    <a class="btn console" href="/console/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l6-5-6-5M12 19h8"/></svg><span>Console</span></a>
     <a class="iconbtn" href="https://github.com/lumwatch" target="_blank" rel="noopener" aria-label="Lumwatch on GitHub"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
     <button class="btn wallet" type="button" id="wallet">Connect wallet</button>
     <a class="btn primary" href="/app/">Launch app</a>
@@ -88,6 +90,10 @@
   </div>
 </div>
 <section class="band"><div class="wrap"><div class="head reveal"><div class="label">What Lumwatch does</div><h2>Private where it matters. <em>Clean where it counts.</em></h2></div><div class="buildings"><a class="bld link reveal" href="/shield/"><canvas data-scene="granary" aria-hidden="true"></canvas><div class="in"><span class="num">1 · SHIELD</span><h3>Go private</h3><p>Move USDG or ETH into a private balance. The chain sees a hash, never your amount.</p><span class="st build">In development</span></div></a><a class="bld link reveal" href="/send/"><canvas data-scene="market" aria-hidden="true"></canvas><div class="in"><span class="num">2 · SEND</span><h3>Pay anyone</h3><p>A relayer pays the gas and submits the payment, so nothing links it to your wallet.</p><span class="st build">In development</span></div></a><a class="bld link reveal" href="/prove/"><canvas data-scene="light" aria-hidden="true"></canvas><div class="in"><span class="num">3 · PROVE</span><h3>Stay clean</h3><p>Prove your funds are not from a public block list, without showing which deposit is yours.</p><span class="st build">In development</span></div></a></div><p class="muted" style="margin-top:22px;font-size:15px">Live today: the free <a href="/check/">token check</a>, reading Robinhood Chain and Sourcify.</p></div></section>
+<section class="band"><div class="wrap agents"><div class="reveal"><div class="label">Agent console</div><h2 class="h2s">Ask the agent.</h2><p class="muted" style="font-size:18px;margin:16px 0 0">Check a token or read your balance, live on Robinhood Chain. Try shield, send and prove as a walkthrough.</p><div class="cta"><a class="btn primary" href="/console/">Open console</a><a class="btn" href="/agents/">Agents &amp; CLI</a></div></div><div class="reveal"><div class="console"><div class="cbar"><span class="dots"><i></i><i></i><i></i></span><b>Lumwatch agent</b><span class="stat">check + balance live</span></div>
+  <div class="clog" id="clog" aria-live="polite"></div>
+  <div class="cchips"><button type="button" data-ask="check USDG">check USDG</button><button type="button" data-ask="check WETH">check WETH</button><button type="button" data-ask="balance">my balance</button><button type="button" data-ask="shield 100 USDG">shield 100 USDG</button><button type="button" data-ask="send 25 USDG">send 25 USDG</button><button type="button" data-ask="prove my funds are clean">prove clean</button><button type="button" data-ask="help">help</button></div>
+  <form class="cform" id="cform"><label for="cin">Ask the agent</label><input id="cin" type="text" autocomplete="off" spellcheck="false" placeholder="Ask the agent… e.g. check 0x… or balance"><button class="btn primary" type="submit">Run</button></form></div></div></div></section>
 <section class="band"><div class="wrap agents"><div class="reveal"><div class="label">From the terminal</div><h2 class="h2s">One command per move.</h2><p class="muted" style="font-size:18px;margin:16px 0 0">Shield, send and prove from a script or an AI agent. The token check already works in the app today.</p><div class="cta"><a class="btn primary" href="/agents/">Agents &amp; CLI</a><a class="btn" href="/app/">Launch app</a></div></div><div class="reveal"><div class="bpterm"><div class="tbar"><span class="dots"><i></i><i></i><i></i></span><div class="ttabs" role="tablist"><button type="button" data-cmd="shield" aria-selected="false">shield</button><button type="button" data-cmd="send" aria-selected="false">send</button><button type="button" data-cmd="prove" aria-selected="false">prove</button><button type="button" data-cmd="check" aria-selected="false">check</button></div><button class="tcopy" type="button" data-copycmd>Copy</button></div><pre aria-live="polite"></pre></div></div></div></section>
 <section class="band" ><div class="wrap">
   <div class="head reveal"><div class="label">How it works</div><h2>Four steps, <em>no trail.</em></h2><p>The design Lumwatch is being built on. Contracts will be published and verified on Sourcify before anything goes live.</p></div>
@@ -103,9 +109,9 @@
 </div></section>
 </main>
 <footer><div class="wrap">
-  <div><a class="brand" href="/" style="padding:0"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#111418"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#1f5eff"/><path d="M11.5 9h9L16 4.5z" fill="#111418"/><path d="M19.5 11l11-4v8z" fill="#1f5eff" opacity=".55"/></svg>Lumwatch</a><p class="muted" style="font-size:14px;margin:10px 0 0;max-width:34ch">Private payments on Robinhood Chain that stay provably clean. In development.</p></div>
+  <div><a class="brand" href="/" style="padding:0"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#ebecec"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#34c77b"/><path d="M11.5 9h9L16 4.5z" fill="#ebecec"/><path d="M19.5 11l11-4v8z" fill="#34c77b" opacity=".55"/></svg>Lumwatch</a><p class="muted" style="font-size:14px;margin:10px 0 0;max-width:34ch">Private payments on Robinhood Chain that stay provably clean. In development.</p></div>
   <div><h4>Product</h4><a href="/shield/">Shield</a><a href="/send/">Private send</a><a href="/prove/">Clean proof</a><a href="/check/">Token check</a></div>
-  <div><h4>Tools</h4><a href="/app/">Launch app</a><a href="/agents/">Agents &amp; CLI</a><a href="/how/">How it works</a><a href="https://github.com/lumwatch" target="_blank" rel="noopener">GitHub</a></div>
+  <div><h4>Tools</h4><a href="/app/">Launch app</a><a href="/console/">Agent console</a><a href="/agents/">Agents &amp; CLI</a><a href="/how/">How it works</a><a href="https://github.com/lumwatch" target="_blank" rel="noopener">GitHub</a></div>
   <div><h4>Learn</h4><a href="/faq/">FAQ</a><a href="/log/">Changelog</a></div>
   <div class="fine"><span>© 2026 Lumwatch · Robinhood Chain mainnet</span><span>Nothing here is financial advice.</span></div>
 </div></footer>

@@ -100,3 +100,12 @@ body[data-page="terminal"] footer { margin-top: 0; }
 .st-pill em.ok { color: var(--lamp); }
 .st-pill em.ok::before { content: "● "; }
 @media (prefers-reduced-motion: reduce) { .st-track { animation: none; } }
+.tm-home { padding-bottom: 0 !important; }
+.tm-home + .tm { padding-top: 18px; }
+section.band.tm-home { padding: 96px 0 0 !important; }
+.tm-home + .tm, .tm-home + .tm + .st-tape { max-width: 1200px; }
+.tm-home + .tm { padding-top: 22px; }
+@media (max-width: 760px) { section.band.tm-home { padding-top: 64px !important; } }
+section.band.tm-home > .wrap { padding-block: 0 !important; }
+section.band.tm-home { padding: 88px 0 0 !important; }
+.tm-home + .tm .tm-bar { flex-wrap: wrap; row-gap: 12px; }

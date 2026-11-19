@@ -333,6 +333,7 @@
     } finally { $("scan").disabled = false; $("scan").textContent = "Shine the light"; document.querySelector(".scanner").classList.remove("busy"); }
   });
   document.querySelectorAll("[data-ca]").forEach((b) => b.addEventListener("click", () => { $("ca").value = b.dataset.ca; $("scanform").requestSubmit(); }));
+  { const q = new URLSearchParams(location.search).get("ca"); if (q && /^0x[0-9a-fA-F]{40}$/.test(q) && $("ca") && $("scanform")) { $("ca").value = q; $("scanform").requestSubmit(); } }
 
 
 

@@ -3,356 +3,644 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lumwatch · keep watch on Robinhood Chain</title>
+<title>Lumwatch · private payments, provably clean</title>
 <link rel="canonical" href="https://lumwatch.app/">
 <meta property="og:title" content="Lumwatch">
-<meta property="og:description" content="Check a token before you buy. Post paid work for AI agents. Save USDG on a schedule. On Robinhood Chain.">
+<meta property="og:description" content="Private payments on Robinhood Chain that stay provably clean. In development. Free token check live now.">
 <meta property="og:url" content="https://lumwatch.app/">
 <meta property="og:image" content="https://lumwatch.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#08121c">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2308121c'/%3E%3Cpath d='M13 29l1.6-16h2.8L19 29z' fill='%23cfdae3'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='%23ffc861'/%3E%3Cpath d='M11.5 9h9L16 4.5z' fill='%23cfdae3'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f4ef'/%3E%3Cpath d='M13 29l1.6-16h2.8L19 29z' fill='%23111418'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='%231f5eff'/%3E%3Cpath d='M11.5 9h9L16 4.5z' fill='%23111418'/%3E%3C/svg%3E">
 <meta name="description" content="Lumwatch keeps watch over Robinhood Chain: check a token before you buy, post paid work for AI agents, and save USDG on a schedule.">
 <meta name="description" content="Lumwatch keeps watch over Robinhood Chain: check a token before you buy, post paid work for AI agents, and save USDG on a schedule.">
 <meta name="description" content="Lumwatch keeps watch over Robinhood Chain: check a token before you buy, post paid work for AI agents, and save USDG on a schedule.">
+<meta name="description" content="Lumwatch: private payments on Robinhood Chain that stay provably clean. Shield, send and prove without exposing your wallet. In development; the token check is live.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a night harbour you approach from the sea. One lighthouse beam sweeps the page; each section is a building on the quay (I the Light, II the Market, III the Granary). Dark by design: the beam needs the night. */
+/* Layout: a harbour at first light; the lighthouse decides what is seen. An intro curtain lights the lamp, a pinned full-screen scene pulls the lighthouse closer as you scroll, then the quay opens: a working product window, the three buildings, agents, and the harbour log. One light look by choice: clean cream ground, ink text, sea-blue accent. */
 :root {
-  --sea: #08121c;        /* night water, page ground */
-  --tide: #0f1e2c;       /* raised surfaces */
-  --stone: #1b2c3c;      /* lines, quay stone */
-  --fog: #cfdae3;        /* body text */
-  --mist: #8ea3b4;       /* muted text */
-  --lamp: #ffc861;       /* the beam, the one accent */
-  --safe: #6fd4a5;       /* verdict: clear */
-  --warn: #ffb347;       /* verdict: look closer */
-  --danger: #ff6e5a;     /* verdict: stop */
-  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
-  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --sea: #f6f4ef; --tide: #ffffff; --deck: #eef1f6; --stone: #e1ddd4;
+  --fog: #111418; --mist: #5d6573; --lamp: #1f5eff; --lamp-deep: #1546c9; --on-lamp: #ffffff;
+  --safe: #12955a; --warn: #b86e00; --danger: #d23b2b;
+  --display: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --body: "Inter", "Segoe UI", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-  color-scheme: dark;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--sea); color: var(--fog); font: 17px/1.6 var(--body); }
+body { margin: 0; background: var(--sea); color: var(--fog); font: 17px/1.6 var(--body); overflow-x: hidden; }
 a { color: var(--lamp); }
-a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; }
-.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+button { font-family: inherit; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -.025em; }
+.label { font: 600 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--lamp); }
 .mono { font-family: var(--mono); }
-h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: .01em; }
-.label { font: 500 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--lamp); }
+.muted { color: var(--mist); }
 
-/* top bar */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--sea); }
-nav.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: color-mix(in srgb, var(--sea) 86%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--stone); }
-nav.top .wrap { display: flex; align-items: center; gap: 20px; padding-block: 12px; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 10px; font: 800 24px var(--display); letter-spacing: .04em; color: var(--fog); text-decoration: none; text-transform: uppercase; }
-.navlinks { display: flex; gap: 18px; margin-left: auto; flex-wrap: wrap; }
-.navlinks a { color: var(--mist); text-decoration: none; font-size: 15px; }
-.navlinks a:hover { color: var(--fog); }
-.navlinks a b { font: 500 12px var(--mono); color: var(--lamp); margin-right: 6px; }
+/* intro curtain (Stoa "entering") */
+#curtain { position: fixed; inset: 0; z-index: 50; background: var(--sea); display: grid; place-items: center; transition: opacity .9s ease, visibility .9s; }
+#curtain.gone { opacity: 0; visibility: hidden; }
+#curtain .c { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+#curtain .lampdot { width: 14px; height: 14px; border-radius: 50%; background: var(--lamp); box-shadow: 0 0 0 0 var(--lamp); animation: ignite 1.4s ease forwards; }
+@keyframes ignite { 0% { opacity: 0; transform: scale(.2); } 60% { opacity: 1; box-shadow: 0 0 50px 16px color-mix(in srgb, var(--lamp) 40%, transparent); } 100% { opacity: 1; box-shadow: 0 0 90px 30px color-mix(in srgb, var(--lamp) 18%, transparent); } }
+#curtain .t { font: 500 13px var(--mono); letter-spacing: .4em; color: var(--mist); }
+#curtain .w { font: 800 48px var(--display); letter-spacing: -.02em; color: var(--fog); }
 
-/* hero: the harbour at night */
-.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--stone); }
+/* token bar (Blackpool) */
+.tokenbar { background: var(--fog); color: #e9edf3; font-size: 14px; }
+.tokenbar .wrap { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; padding-block: 8px; }
+.tokenbar b { font: 500 13px var(--mono); color: #8fb0ff; }
+.tokenbar .soon { font: 13px var(--mono); color: #fff; }
+.tokenbar .sep { color: #5d6573; } .tokenbar .muted { color: #a9b2c0; }
+
+/* nav with dropdowns */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--sea); }
+nav.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--sea) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--stone); }
+nav.top .wrap { display: flex; align-items: center; gap: 18px; padding-block: 12px; }
+.brand svg { flex: 0 0 auto; }
+.brand { display: flex; align-items: center; gap: 10px; font: 800 22px var(--display); letter-spacing: -.02em; color: var(--fog); text-decoration: none; }
+.menu { display: flex; gap: 4px; margin-left: 12px; }
+.dd { position: relative; }
+.dd > button, .menu > a { background: none; border: 0; color: var(--mist); font-size: 15px; padding: 8px 12px; border-radius: 6px; cursor: pointer; text-decoration: none; }
+.dd > button:hover, .menu > a:hover, .dd.open > button { color: var(--fog); background: var(--tide); }
+.dd > button::after { content: " ▾"; font-size: 11px; }
+.panel { position: absolute; top: calc(100% + 8px); left: 0; width: 340px; background: var(--tide); border: 1px solid var(--stone); border-radius: 10px; padding: 8px; display: none; box-shadow: 0 24px 50px -20px rgba(17,20,24,.25); }
+.dd.open .panel { display: grid; }
+.panel a { display: grid; gap: 2px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: var(--fog); }
+.panel a:hover { background: var(--deck); }
+.panel a b { font-size: 15px; } .panel a span { font-size: 13px; color: var(--mist); }
+.panel a i { font: normal 500 11px var(--mono); color: var(--lamp); margin-left: 6px; }
+.navcta { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.navcta .btn { white-space: nowrap; }
+@media (max-width: 520px) { .navcta .btn { padding: 9px 12px; font-size: 14px; } .brand { font-size: 21px; } .tokenbar .muted, .tokenbar .sep { display: none; } .tokenbar .soon { display: block; } }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 6px; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid var(--stone); color: var(--fog); background: transparent; cursor: pointer; }
+.btn.primary { background: var(--lamp); border-color: var(--lamp); color: var(--on-lamp); }
+.btn.primary:hover { background: var(--lamp-deep); border-color: var(--lamp-deep); }
+.btn:hover { border-color: var(--lamp); }
+.burger { display: none; }
+@media (max-width: 900px) { .menu { display: none; } .burger { display: inline-flex; } nav.top.open .menu { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--tide); padding: 10px max(16px, env(safe-area-inset-left, 0px)); border-bottom: 1px solid var(--stone); margin: 0; } nav.top.open .panel { position: static; width: auto; box-shadow: none; } }
+
+/* pinned hero (Stoa) */
+.voyage { position: relative; height: 230vh; }
+.stage { position: sticky; top: 0; height: 100vh; min-height: 560px; overflow: hidden; }
 #sky { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.hero .wrap { position: relative; padding-block: 72px 64px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 32px; align-items: end; }
-@media (max-width: 860px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 48px 40px; } }
-.hero h1 { font-weight: 900; font-size: clamp(56px, 9vw, 120px); line-height: .88; text-transform: uppercase; }
-.hero h1 span { display: block; color: var(--lamp); }
-.lede { max-width: 54ch; color: var(--fog); font-size: 19px; margin: 22px 0 0; }
-.doors { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-.door { display: inline-flex; gap: 10px; align-items: baseline; padding: 12px 18px; border: 1px solid var(--stone); background: color-mix(in srgb, var(--tide) 80%, transparent); color: var(--fog); text-decoration: none; border-radius: 4px; font-weight: 700; }
-.door b { font: 500 12px var(--mono); color: var(--lamp); }
-.door.primary { background: var(--lamp); color: #1d1404; border-color: var(--lamp); }
-.door.primary b { color: #6b4a07; }
-.door:hover { border-color: var(--lamp); }
-.watchlog { font: 13px/1.7 var(--mono); color: var(--mist); border-left: 2px solid var(--lamp); padding: 4px 0 4px 16px; background: color-mix(in srgb, var(--sea) 60%, transparent); }
-.watchlog b { color: var(--fog); font-weight: 500; }
+.stage .copy { position: absolute; inset: 72px 0 40px 0; display: flex; flex-direction: column; justify-content: center; }
+.phase { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); transition: opacity .6s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+.phase.off { opacity: 0; transform: translateY(24px); pointer-events: none; }
+.p1 h1 { font-weight: 800; font-size: clamp(50px, 7.4vw, 100px); line-height: .98; max-width: 11ch; }
+.p1 h1 span { display: block; color: var(--lamp); }
+.p1 p { max-width: 50ch; font-size: 20px; margin: 22px 0 0; }
+@media (max-width: 700px) { .p1 p, .p2 p { font-size: 17px; max-width: 32ch; } .p1 h1 { font-size: clamp(56px, 17vw, 90px); } .p2 h2, .p3 h2 { font-size: clamp(40px, 12vw, 64px); } .chains { margin-top: 20px; } }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.chains { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; font: 13px var(--mono); color: var(--mist); align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--stone); border-radius: 999px; padding: 6px 12px; background: color-mix(in srgb, var(--tide) 75%, transparent); }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--safe); }
+.chip.next::before { background: var(--mist); }
+.p2 h2, .p3 h2 { font-weight: 800; font-size: clamp(40px, 5.6vw, 76px); line-height: 1; max-width: 14ch; }
+.p2 h2 em, .p3 h2 em { font-style: normal; color: var(--lamp); }
+.p2 p, .p3 p { font-size: 19px; max-width: 46ch; margin: 18px 0 0; }
+.quay { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 26px; max-width: 760px; }
+.quay a { display: block; border: 1px solid var(--stone); background: color-mix(in srgb, var(--tide) 88%, transparent); border-radius: 10px; padding: 14px; box-shadow: 0 10px 30px -20px rgba(17,20,24,.3); text-decoration: none; color: var(--fog); }
+.quay a b { display: block; font: 800 24px var(--display); }
+.quay a i { font: normal 500 12px var(--mono); color: var(--lamp); }
+.quay a span { display: block; font-size: 14px; color: var(--mist); }
+@media (max-width: 640px) { .quay { grid-template-columns: minmax(0, 1fr); } }
+.descend { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); font: 500 11px var(--mono); letter-spacing: .3em; color: var(--mist); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.descend i { width: 1px; height: 34px; background: linear-gradient(var(--lamp), transparent); animation: drop 2.2s infinite; }
+@keyframes drop { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+.depth { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; }
+.depth span { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--mist); transition: background .3s, border-color .3s; }
+.depth span.on { background: var(--lamp); border-color: var(--lamp); }
+@media (max-width: 640px) { .depth { display: none; } }
 
 /* sections */
-section.bay { border-bottom: 1px solid var(--stone); }
-section.bay > .wrap { padding-block: 80px; display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 48px; }
-@media (max-width: 860px) { section.bay > .wrap { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 56px; } }
-.side .num { font: 900 104px/0.8 var(--display); color: transparent; -webkit-text-stroke: 1.5px var(--lamp); letter-spacing: .06em; }
-.side h2 { font-weight: 800; font-size: clamp(38px, 5vw, 56px); line-height: .95; text-transform: uppercase; margin-top: 14px; }
-.side p { color: var(--mist); margin: 14px 0 0; }
-.status { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; border: 1px solid currentColor; }
-.status.live { color: var(--safe); }
-.status.build { color: var(--warn); }
-.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-.status.live::before { animation: blink 1.8s infinite; }
+section.band { border-top: 1px solid var(--stone); }
+section.band > .wrap { padding-block: 96px; }
+.head { max-width: 760px; display: grid; gap: 14px; margin-bottom: 40px; }
+.head h2 { font-weight: 800; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; }
+.head h2 em { font-style: normal; color: var(--lamp); }
+.head p { color: var(--mist); font-size: 19px; margin: 0; }
+
+/* product window (Blackpool demo) */
+.app { border: 1px solid var(--stone); border-radius: 16px; overflow: hidden; background: var(--sea); box-shadow: 0 40px 90px -45px rgba(17,20,24,.35); }
+.appbar { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--stone); background: var(--deck); }
+.appbar i { width: 11px; height: 11px; border-radius: 50%; background: var(--stone); display: block; }
+.appbar .url { margin-left: 12px; font: 13px var(--mono); color: var(--mist); background: var(--tide); border-radius: 6px; padding: 4px 12px; flex: 0 1 320px; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.appbar .live { margin-left: auto; font: 500 12px var(--mono); color: var(--safe); display: inline-flex; gap: 6px; align-items: center; }
+.appbar .live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: blink 1.8s infinite; }
 @keyframes blink { 50% { opacity: .25; } }
+.appbody { display: grid; grid-template-columns: 220px minmax(0, 1fr); min-height: 560px; }
+@media (max-width: 860px) { .appbody { grid-template-columns: minmax(0, 1fr); } }
+.side { border-right: 1px solid var(--stone); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; }
+@media (max-width: 860px) { .side { border-right: 0; border-bottom: 1px solid var(--stone); flex-direction: row; flex-wrap: wrap; } }
+.side .grp { font: 500 11px var(--mono); letter-spacing: .14em; color: var(--mist); text-transform: uppercase; padding: 10px 10px 4px; }
+@media (max-width: 860px) { .side .grp { display: none; } }
+.side button { text-align: left; background: none; border: 0; color: var(--mist); font-size: 15px; padding: 9px 10px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; }
+.side button:hover { color: var(--fog); background: var(--deck); }
+.side button[aria-selected="true"] { color: var(--fog); background: var(--deck); box-shadow: inset 2px 0 0 var(--lamp); }
+.side button small { font: 11px var(--mono); color: var(--lamp); }
+.view { padding: 22px; min-width: 0; }
+.view[hidden] { display: none; }
+.vh { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: baseline; margin-bottom: 18px; }
+.vh h3 { font: 700 26px var(--display); }
+.vh span { font: 13px var(--mono); color: var(--mist); }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tile { border: 1px solid var(--stone); border-radius: 10px; padding: 14px; background: var(--tide); }
+.tile span { font-size: 13px; color: var(--mist); } .tile b { display: block; font: 800 32px var(--display); margin-top: 4px; font-variant-numeric: tabular-nums; }
+.tile small { font: 12px var(--mono); color: var(--mist); }
+.split2 { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; margin-top: 16px; }
+@media (max-width: 760px) { .split2 { grid-template-columns: minmax(0, 1fr); } }
+.box { border: 1px solid var(--stone); border-radius: 10px; padding: 16px; background: var(--tide); min-width: 0; }
+.box h4 { margin: 0 0 10px; font-size: 15px; color: var(--fog); }
+.feed { display: flex; flex-direction: column; gap: 8px; font: 13px/1.5 var(--mono); }
+.feed div { display: grid; grid-template-columns: 70px minmax(0, 1fr) auto; gap: 10px; padding: 8px 0; border-top: 1px solid var(--stone); }
+.feed div:first-child { border-top: 0; }
+.feed .t { color: var(--mist); } .feed .ok { color: var(--safe); } .feed .wa { color: var(--warn); } .feed .no { color: var(--danger); }
+.bars { display: flex; align-items: flex-end; gap: 6px; height: 120px; }
+.bars i { flex: 1; background: linear-gradient(var(--lamp), color-mix(in srgb, var(--lamp) 25%, transparent)); border-radius: 3px 3px 0 0; min-height: 4px; transition: height .8s cubic-bezier(.2,.8,.2,1); }
+.barlabels { display: flex; justify-content: space-between; font: 11px var(--mono); color: var(--mist); margin-top: 6px; }
 
-/* I: scanner */
-.scanner { background: var(--tide); border: 1px solid var(--stone); border-radius: 8px; overflow: hidden; min-width: 0; }
-.scanbar { display: flex; gap: 10px; padding: 18px; border-bottom: 1px solid var(--stone); flex-wrap: wrap; }
+/* pipeline (Blackpool steps) */
+.flowgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+@media (max-width: 860px) { .flowgrid { grid-template-columns: minmax(0, 1fr); } }
+.steps { display: flex; flex-direction: column; gap: 10px; }
+.step { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; align-items: start; border: 1px solid var(--stone); border-radius: 10px; padding: 12px 14px; background: var(--tide); transition: border-color .4s, background .4s; }
+.step .n { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--stone); display: grid; place-items: center; font: 500 13px var(--mono); color: var(--mist); }
+.step b { display: block; font-size: 15px; } .step p { margin: 3px 0 0; font-size: 14px; color: var(--mist); }
+.step .st { font: 500 12px var(--mono); color: var(--mist); white-space: nowrap; }
+.step.run { border-color: var(--lamp); background: color-mix(in srgb, var(--lamp) 6%, var(--tide)); }
+.step.run .n { border-color: var(--lamp); color: var(--lamp); }
+.step.run .st { color: var(--lamp); }
+.step.done .n { background: var(--safe); border-color: var(--safe); color: #fff; }
+.step.done .st { color: var(--safe); }
+.form { border: 1px solid var(--stone); border-radius: 10px; padding: 16px; background: var(--tide); display: grid; gap: 12px; }
+.form .row { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; border-bottom: 1px dashed var(--stone); padding-bottom: 10px; }
+.form .row span { color: var(--mist); } .form .row b { font: 500 14px var(--mono); text-align: right; overflow-wrap: anywhere; }
+.form .go { width: 100%; justify-content: center; }
+.form .result { font: 500 14px var(--mono); color: var(--mist); min-height: 22px; }
+.form .result.ok { color: var(--safe); }
+
+/* real scanner inside the window */
+.scanbar { display: flex; gap: 10px; flex-wrap: wrap; }
 .scanbar label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-#ca { flex: 1 1 280px; min-width: 0; font: 15px var(--mono); color: var(--fog); background: var(--sea); border: 1px solid var(--stone); border-radius: 4px; padding: 12px 14px; }
-#scan { font: 700 16px var(--body); background: var(--lamp); color: #1d1404; border: 0; border-radius: 4px; padding: 12px 20px; cursor: pointer; }
-.presets { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 18px 16px; border-bottom: 1px solid var(--stone); margin-top: -6px; }
-.presets button { font: 13px var(--mono); color: var(--mist); background: transparent; border: 1px dashed var(--stone); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+#ca { flex: 1 1 260px; min-width: 0; font: 14px var(--mono); color: var(--fog); background: var(--tide); border: 1px solid var(--stone); border-radius: 6px; padding: 11px 12px; }
+.presets { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 14px; align-items: center; font: 13px var(--mono); color: var(--mist); }
+.presets button { font: 13px var(--mono); color: var(--mist); background: transparent; border: 1px dashed var(--stone); border-radius: 999px; padding: 4px 11px; cursor: pointer; }
 .presets button:hover { color: var(--fog); border-color: var(--mist); }
-.verdict { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 18px; align-items: center; padding: 20px 18px; border-bottom: 1px solid var(--stone); }
-.lamp { width: 64px; height: 64px; border-radius: 50%; background: radial-gradient(circle, var(--v, var(--mist)) 0 30%, transparent 70%); box-shadow: 0 0 40px -6px var(--v, var(--mist)); transition: background .4s, box-shadow .4s; }
-.verdict h3 { font: 800 30px/1 var(--display); text-transform: uppercase; color: var(--v, var(--fog)); }
-.verdict p { margin: 6px 0 0; color: var(--mist); font-size: 15px; overflow-wrap: anywhere; }
-.checks { list-style: none; margin: 0; padding: 0; }
-.checks li { display: grid; grid-template-columns: 28px minmax(0, 190px) minmax(0, 1fr); gap: 12px; padding: 12px 18px; border-bottom: 1px solid color-mix(in srgb, var(--stone) 70%, transparent); align-items: baseline; }
-@media (max-width: 560px) { .checks li { grid-template-columns: 28px minmax(0, 1fr); } .checks li .v { grid-column: 2; } }
-.checks li .i { font: 700 15px var(--mono); }
-.checks li .k { color: var(--fog); font-weight: 700; font-size: 15px; }
-.checks li .v { color: var(--mist); font: 14px/1.5 var(--mono); overflow-wrap: anywhere; }
-.checks li.ok .i { color: var(--safe); } .checks li.warn .i { color: var(--warn); } .checks li.bad .i { color: var(--danger); } .checks li.na .i { color: var(--mist); }
-.scanfoot { padding: 14px 18px; font: 13px var(--mono); color: var(--mist); }
-.legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; font-size: 14px; color: var(--mist); }
-.legend span::before { content: "●"; margin-right: 6px; }
-.legend .g::before { color: var(--safe); } .legend .a::before { color: var(--warn); } .legend .r::before { color: var(--danger); }
-
-/* II: market */
-.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--stone); border-radius: 8px; overflow: hidden; }
-@media (max-width: 760px) { .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.flow div { padding: 18px; border-right: 1px solid var(--stone); background: var(--tide); }
-.flow div:last-child { border-right: 0; }
-.flow b { display: block; font: 800 22px var(--display); text-transform: uppercase; color: var(--fog); }
-.flow span { display: block; color: var(--mist); font-size: 15px; margin-top: 6px; }
-.flow i { font: normal 500 12px var(--mono); color: var(--lamp); }
-.board { margin-top: 22px; display: grid; gap: 10px; }
-.board .head { display: flex; justify-content: space-between; font: 13px var(--mono); color: var(--mist); }
-.job { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 18px; padding: 16px 18px; border: 1px solid var(--stone); border-radius: 6px; }
-.job b { font-size: 17px; }
-.job .pay { font: 500 17px var(--mono); color: var(--lamp); text-align: right; }
-.job .meta { font: 13px var(--mono); color: var(--mist); }
-.job .st { font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; text-align: right; }
-.st.open { color: var(--safe); } .st.work { color: var(--warn); } .st.done { color: var(--mist); }
-
-/* III: granary */
-.calc { background: var(--tide); border: 1px solid var(--stone); border-radius: 8px; padding: 22px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
-@media (max-width: 760px) { .calc { grid-template-columns: minmax(0, 1fr); } }
-.calc label { display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: var(--mist); margin-bottom: 16px; }
-.calc input[type=range] { accent-color: var(--lamp); width: 100%; }
-.calc output { font: 500 15px var(--mono); color: var(--fog); }
-.silo { display: flex; flex-direction: column; justify-content: flex-end; }
-.silo .big { font: 900 72px/1 var(--display); color: var(--lamp); font-variant-numeric: tabular-nums; }
-.silo .unit { font: 500 14px var(--mono); color: var(--mist); }
-.grain { position: relative; height: 150px; margin-top: 16px; border: 1px solid var(--stone); border-radius: 6px 6px 2px 2px; overflow: hidden; background: var(--sea); }
-.grain i { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: repeating-linear-gradient(0deg, color-mix(in srgb, var(--lamp) 70%, transparent) 0 6px, color-mix(in srgb, var(--lamp) 45%, transparent) 6px 12px); transition: height .5s ease; }
-.grain em { position: absolute; top: 10px; left: 12px; font: normal 12px var(--mono); color: var(--mist); }
-.rules3 { margin-top: 18px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-@media (max-width: 760px) { .rules3 { grid-template-columns: minmax(0, 1fr); } }
-.rules3 div { border-top: 2px solid var(--lamp); padding-top: 10px; }
-.rules3 b { display: block; font-size: 16px; } .rules3 span { color: var(--mist); font-size: 15px; }
-
-/* watches (roadmap) */
-.watches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-@media (max-width: 760px) { .watches { grid-template-columns: minmax(0, 1fr); } }
-.watch { border: 1px solid var(--stone); border-radius: 8px; padding: 20px; }
-.watch .t { font: 500 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--lamp); }
-.watch h3 { font-size: 30px; text-transform: uppercase; margin-top: 8px; }
-.watch ul { margin: 12px 0 0; padding-left: 18px; color: var(--mist); font-size: 15px; }
-footer { padding-block: 40px; }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--mist); }
-/* motion: each building shows how it works */
-.descend { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); font: 500 11px var(--mono); letter-spacing: .2em; color: var(--mist); display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; }
-.descend i { width: 1px; height: 28px; background: linear-gradient(var(--lamp), transparent); animation: drop 2.2s infinite; }
-@keyframes drop { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
-.scanner { position: relative; }
-.sweep { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(100deg, transparent 0 40%, color-mix(in srgb, var(--v, var(--lamp)) 22%, transparent) 50%, transparent 60% 100%); background-size: 260% 100%; background-position: 120% 0; opacity: 0; }
+.scanner { position: relative; border: 1px solid var(--stone); border-radius: 10px; overflow: hidden; background: var(--tide); }
+.sweep { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(100deg, transparent 0 40%, color-mix(in srgb, var(--lamp) 20%, transparent) 50%, transparent 60% 100%); background-size: 260% 100%; background-position: 120% 0; opacity: 0; }
 .scanner.busy .sweep { opacity: 1; animation: sweep 1.1s linear infinite; }
 @keyframes sweep { to { background-position: -120% 0; } }
+.verdict { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: center; padding: 16px; border-bottom: 1px solid var(--stone); }
+.lamp { width: 56px; height: 56px; border-radius: 50%; background: radial-gradient(circle, var(--v, var(--mist)) 0 30%, transparent 70%); box-shadow: 0 0 40px -6px var(--v, var(--mist)); transition: background .4s, box-shadow .4s; }
+.verdict h3 { font: 700 26px/1.1 var(--display); color: var(--v, var(--fog)); }
+.verdict p { margin: 6px 0 0; color: var(--mist); font-size: 14px; overflow-wrap: anywhere; }
+.checks { list-style: none; margin: 0; padding: 0; }
+.checks li { display: grid; grid-template-columns: 24px minmax(0, 170px) minmax(0, 1fr); gap: 12px; padding: 10px 16px; border-bottom: 1px solid color-mix(in srgb, var(--stone) 70%, transparent); align-items: baseline; }
+@media (max-width: 560px) { .checks li { grid-template-columns: 24px minmax(0, 1fr); } .checks li .v { grid-column: 2; } }
+.checks li .i { font: 700 14px var(--mono); } .checks li .k { font-weight: 700; font-size: 14px; } .checks li .v { color: var(--mist); font: 13px/1.5 var(--mono); overflow-wrap: anywhere; }
+.checks li.ok .i { color: var(--safe); } .checks li.warn .i { color: var(--warn); } .checks li.bad .i { color: var(--danger); } .checks li.na .i { color: var(--mist); }
 .checks li.in { animation: rowin .45s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes rowin { from { opacity: 0; transform: translateX(-10px); } }
-.flow { position: relative; }
-.coin { position: absolute; top: 10px; left: 0; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff3c8, var(--lamp) 55%, #b8862a); box-shadow: 0 0 16px var(--lamp); font: 700 9px var(--mono); color: #3a2a06; display: grid; place-items: center; animation: travel 8s cubic-bezier(.6,0,.4,1) infinite; z-index: 1; }
-@keyframes travel { 0%, 8% { left: calc(25% - 36px); } 25%, 33% { left: calc(50% - 36px); } 50%, 58% { left: calc(75% - 36px); } 75%, 92% { left: calc(100% - 36px); opacity: 1; } 100% { left: calc(100% - 36px); opacity: 0; } }
-.flow div { transition: background .4s; }
-.flow div.lit { background: color-mix(in srgb, var(--lamp) 10%, var(--tide)); }
-.flow div.lit b { color: var(--lamp); }
-@media (max-width: 760px) { .coin { display: none; } }
-.grain b { position: absolute; top: 0; width: 4px; height: 4px; border-radius: 1px; background: var(--lamp); opacity: .8; animation: fall 1.6s linear infinite; }
-@keyframes fall { from { transform: translateY(-6px); } to { transform: translateY(150px); opacity: .2; } }
-.job { transition: border-color .4s, transform .4s; }
-.job.flash { border-color: var(--lamp); transform: translateX(4px); }
+.scanfoot { padding: 12px 16px; font: 12px var(--mono); color: var(--mist); }
+
+/* three buildings */
+.buildings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 860px) { .buildings { grid-template-columns: minmax(0, 1fr); } }
+.bld { border: 1px solid var(--stone); border-radius: 12px; overflow: hidden; background: var(--tide); display: flex; flex-direction: column; }
+.bld canvas { display: block; width: 100%; height: 190px; background: var(--deck); }
+.bld .in { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.bld .num { font: 500 12px var(--mono); color: var(--lamp); letter-spacing: .14em; }
+.bld h3 { font-weight: 700; font-size: 28px; }
+.bld p { margin: 0; color: var(--mist); font-size: 15.5px; }
+.bld .st { margin-top: auto; font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; display: inline-flex; gap: 8px; align-items: center; }
+.bld .st::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.st.live { color: var(--safe); } .st.build { color: var(--warn); }
+
+/* agents + cli */
+.agents { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px; align-items: center; }
+@media (max-width: 860px) { .agents { grid-template-columns: minmax(0, 1fr); } }
+.term { background: #0f1520; border: 1px solid #1d2633; border-radius: 12px; overflow: hidden; }
+.term .bar { display: flex; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #1d2633; }
+.term .bar i { width: 11px; height: 11px; border-radius: 50%; background: #2a3442; display: block; }
+.term pre { margin: 0; padding: 18px 20px; font: 14px/1.7 var(--mono); color: #e6ebf2; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 260px; }
+.term .c { color: #6c7a8d; } .term .p { color: #8fb0ff; } .term .g { color: #5fd49b; } .term .y { color: #f2b24d; }
+.ticks { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
+.ticks li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; color: var(--fog); }
+.ticks li::before { content: "◆"; color: var(--lamp); font-size: 12px; margin-top: 4px; }
+.ticks li span { color: var(--mist); }
+
+/* how it works */
+.how { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--stone); border-radius: 12px; overflow: hidden; }
+@media (max-width: 860px) { .how { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .how { grid-template-columns: minmax(0, 1fr); } }
+.how div { padding: 22px; border-right: 1px solid var(--stone); background: var(--tide); }
+.how div:last-child { border-right: 0; }
+.how i { font: normal 800 40px var(--display); color: var(--lamp); }
+.how b { display: block; font: 800 24px var(--display); margin-top: 6px; }
+.how span { color: var(--mist); font-size: 15px; }
+
+.how.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 760px) { .how.three { grid-template-columns: minmax(0, 1fr); } .how.three div { border-right: 0; border-bottom: 1px solid var(--stone); } }
+/* faq */
+details.q { border-bottom: 1px solid var(--stone); padding: 18px 0; }
+details.q summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 14px; font: 700 18px var(--body); }
+details.q summary::after { content: "+"; color: var(--lamp); font-size: 24px; line-height: 1; transition: transform .2s; }
+details.q[open] summary::after { transform: rotate(45deg); }
+details.q p { color: var(--mist); margin: 10px 0 0; max-width: 72ch; }
+
+/* final cta + footer */
+.final { position: relative; overflow: hidden; border-radius: 16px; border: 1px solid var(--stone); padding: 60px 32px; background: radial-gradient(600px 300px at 85% 0%, color-mix(in srgb, var(--lamp) 16%, transparent), transparent 70%), var(--tide); display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center; }
+.final h2 { font-weight: 800; font-size: clamp(36px, 5vw, 64px); line-height: 1; max-width: 12ch; }
+footer { border-top: 1px solid var(--stone); }
+footer .wrap { padding-block: 48px 36px; display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 28px; }
+@media (max-width: 760px) { footer .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+footer h4 { margin: 0 0 10px; font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--lamp); }
+footer a { display: block; color: var(--mist); text-decoration: none; font-size: 15px; padding: 3px 0; } footer a:hover { color: var(--fog); }
+footer .fine { grid-column: 1 / -1; border-top: 1px solid var(--stone); padding-top: 18px; font-size: 13px; color: var(--mist); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
+
 .reveal { transition: transform .8s cubic-bezier(.2,.8,.2,1), opacity .8s; }
-.reveal.pre { transform: translateY(24px); opacity: .3; }
-@media (prefers-reduced-motion: reduce) { .descend i, .coin, .grain b, .scanner.busy .sweep { animation: none; } .reveal.pre { transform: none; opacity: 1; } .status.live::before { animation: none; } html { scroll-behavior: auto; } }
+.reveal.pre { transform: translateY(28px); opacity: .25; }
+@media (prefers-reduced-motion: reduce) { #curtain { display: none; } .reveal.pre { transform: none; opacity: 1; } .descend i, .appbar .live::before, .scanner.busy .sweep { animation: none; } html { scroll-behavior: auto; } .voyage { height: auto; } .stage { position: relative; height: auto; min-height: 640px; } }
 </style>
 </head>
 <body>
 
 
-<nav class="top"><div class="wrap">
-  <a class="brand" href="#top"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#cfdae3"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#ffc861"/><path d="M11.5 9h9L16 4.5z" fill="#cfdae3"/><path d="M19.5 11l11-4v8z" fill="#ffc861" opacity=".55"/></svg>Lumwatch</a>
-  <div class="navlinks"><a href="#light"><b>I</b>The Light</a><a href="#market"><b>II</b>The Market</a><a href="#granary"><b>III</b>The Granary</a><a href="#watches">Watches</a></div>
+<div id="curtain" aria-hidden="true"><div class="c"><span class="lampdot"></span><span class="t">DIMMING THE WINDOWS</span><span class="w">LUMWATCH</span></div></div>
+
+<div class="tokenbar"><div class="wrap">
+  <span><b>$LUM</b> contract on Robinhood Chain: <span class="soon">announced at launch, only on this site</span></span>
+  <span class="sep">·</span>
+  <span class="muted">Our only links are lumwatch.app and the X account listed here.</span>
+</div></div>
+
+<nav class="top" id="nav"><div class="wrap">
+  <a class="brand" href="#top"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M13 30l1.6-17h2.8L19 30z" fill="#111418"/><rect x="12.5" y="9" width="7" height="4" rx="1" fill="#1f5eff"/><path d="M11.5 9h9L16 4.5z" fill="#111418"/><path d="M19.5 11l11-4v8z" fill="#1f5eff" opacity=".55"/></svg>Lumwatch</a>
+  <div class="menu" id="menu">
+    <div class="dd"><button type="button" aria-expanded="false">Product</button>
+      <div class="panel">
+        <a href="#app" data-view="granary"><b>Shield <i>PREVIEW</i></b><span>Turn USDG or ETH into a private balance only you can see.</span></a>
+        <a href="#app" data-view="market"><b>Private send <i>PREVIEW</i></b><span>Pay any address. Nothing links it back to your wallet.</span></a>
+        <a href="#app" data-view="watch"><b>Clean proof <i>PREVIEW</i></b><span>Prove your funds are not from a blocked list, without showing which ones are yours.</span></a>
+        <a href="#app" data-view="scan"><b>Token check <i>LIVE</i></b><span>Free: check any Robinhood Chain token before you buy.</span></a>
+      </div></div>
+    <div class="dd"><button type="button" aria-expanded="false">Tools</button>
+      <div class="panel">
+        <a href="#agents"><b>Agents &amp; CLI</b><span>Private payments from scripts and AI agents. MCP server planned.</span></a>
+        <a href="#how"><b>How it works</b><span>Shield, prove, relay, deliver. And the clean proof.</span></a>
+      </div></div>
+    <div class="dd"><button type="button" aria-expanded="false">Learn</button>
+      <div class="panel">
+        <a href="#faq"><b>FAQ</b><span>Privacy, rules, fees and what is live today.</span></a>
+        <a href="#log"><b>Harbour log</b><span>What shipped and what's next.</span></a>
+      </div></div>
+    <a href="#how">How it works</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="navcta"><button class="btn burger" type="button" id="burger" aria-expanded="false">Menu</button><a class="btn primary" href="#app">See preview</a></div>
 </div></nav>
 
-<header class="hero" id="top">
-  <canvas id="sky" aria-hidden="true"></canvas>
-  <div class="wrap">
-    <div>
-      <div class="label">Robinhood Chain mainnet · chain 4663</div>
-      <h1 style="margin-top:16px">Keep watch <span>before you sail.</span></h1>
-      <p class="lede">Lumwatch is a harbour with three buildings. The Light checks a token before you buy it. The Market pays AI agents only when the work is done. The Granary saves your USDG on a schedule you can't break on a bad day.</p>
-      <div class="doors">
-        <a class="door primary" href="#light"><b>I</b>Check a token</a>
-        <a class="door" href="#market"><b>II</b>Post work for agents</a>
-        <a class="door" href="#granary"><b>III</b>Save USDG</a>
+<div class="voyage" id="top">
+  <div class="stage">
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <div class="copy"><div class="wrap" style="position:relative;width:100%;height:100%">
+      <div class="phase p1" style="top:50%;transform:translateY(-50%)">
+        <div class="label">Robinhood Chain · in development</div>
+        <h1 style="margin-top:16px">Pay privately. <span>Stay provably clean.</span></h1>
+        <p>Shield, send and pay on Robinhood Chain without putting your wallet on display. When someone asks, prove your funds are clean without showing which ones are yours.</p>
+        <div class="cta"><a class="btn primary" href="#app">See the preview</a><a class="btn" href="#how">How it works</a></div>
+        <div class="chains"><span class="chip">Robinhood Chain</span><span class="chip">USDG</span><span class="chip">ETH</span><span class="chip next">more chains later</span></div>
+      </div>
+      <div class="phase p2 off" style="top:50%;transform:translateY(-50%)">
+        <div class="label">The idea</div>
+        <h2 style="margin-top:14px">Your wallet is <em>a lit window.</em></h2>
+        <p>Every payment you make shows your balance, your history and everyone you pay. Lumwatch lets you choose what stays in the dark.</p>
+      </div>
+      <div class="phase p3 off" style="top:50%;transform:translateY(-50%)">
+        <div class="label">Three moves</div>
+        <h2 style="margin-top:14px">Shield. Send. <em>Prove.</em></h2>
+        <div class="quay">
+          <a href="#app" data-view="granary"><i>1 · PREVIEW</i><b>Shield</b><span>Go private</span></a>
+          <a href="#app" data-view="market"><i>2 · PREVIEW</i><b>Send</b><span>Pay anyone</span></a>
+          <a href="#app" data-view="watch"><i>3 · PREVIEW</i><b>Prove</b><span>Stay clean</span></a>
+        </div>
+      </div>
+    </div></div>
+    <div class="depth" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+    <div class="descend" aria-hidden="true">SCROLL TO SAIL IN<i></i></div>
+  </div>
+</div>
+
+<section class="band" id="app"><div class="wrap">
+  <div class="head reveal"><div class="label">Preview</div><h2>See it <em>before it ships.</em></h2><p>Pick a view on the left. Shield, Private send and Clean proof walk through how they will work, with example numbers. Token check is live on Robinhood Chain today.</p></div>
+  <div class="app reveal">
+    <div class="appbar"><i></i><i></i><i></i><span class="url" id="appurl">lumwatch.app/app · overview</span><span class="live">preview</span></div>
+    <div class="appbody">
+      <div class="side" role="tablist">
+        <span class="grp">Account</span>
+        <button type="button" role="tab" data-view="overview" aria-selected="true">Overview <small>preview</small></button>
+        <span class="grp">Private payments</span>
+        <button type="button" role="tab" data-view="granary">Shield <small>preview</small></button>
+        <button type="button" role="tab" data-view="market">Private send <small>preview</small></button>
+        <button type="button" role="tab" data-view="watch">Clean proof <small>preview</small></button>
+        <span class="grp">Free tools</span>
+        <button type="button" role="tab" data-view="scan">Token check <small>live</small></button>
+      </div>
+
+      <div class="view" id="v-overview">
+        <div class="vh"><h3>Private account</h3><span>example account · preview</span></div>
+        <div class="tiles">
+          <div class="tile"><span>Private balance</span><b>1,250</b><small>USDG · example</small></div>
+          <div class="tile"><span>Shielded notes</span><b>7</b><small>5 unspent · 2 spent</small></div>
+          <div class="tile"><span>Clean proof</span><b style="color:var(--safe)">valid</b><small>against the public block list</small></div>
+          <div class="tile"><span>Relayer fees</span><b>0.42</b><small>USDG · paid from notes</small></div>
+        </div>
+        <div class="split2">
+          <div class="box"><h4>Activity (only you see this)</h4><div class="feed" id="feed"></div></div>
+          <div class="box"><h4>Private balance over time</h4><div class="bars" id="bars"></div><div class="barlabels"><span>Sep</span><span>Oct</span><span>Nov</span><span>now</span></div><p class="muted" style="font-size:13px;margin:10px 0 0">Example data. Your private history stays encrypted in your browser.</p></div>
+        </div>
+      </div>
+
+      <div class="view" id="v-scan" hidden>
+        <div class="vh"><h3>Token check</h3><span>live · free · Robinhood Chain + Sourcify</span></div>
+        <form class="scanbar" id="scanform"><label for="ca">Token contract address</label>
+          <input id="ca" type="text" autocomplete="off" spellcheck="false" placeholder="0x… token contract on Robinhood Chain" value="0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168">
+          <button class="btn primary" id="scan" type="submit">Shine the light</button></form>
+        <div class="presets">try: <button type="button" data-ca="0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168">USDG</button><button type="button" data-ca="0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73">WETH</button><button type="button" data-ca="0x000000000000000000000000000000000000dEaD">a wallet, not a token</button></div>
+        <div class="scanner" aria-live="polite"><div class="sweep" aria-hidden="true"></div>
+          <div class="verdict"><div class="lamp" id="lamp" style="--v: var(--warn)"></div><div><h3 id="vtitle" style="--v: var(--warn)">Look closer</h3><p id="vtext">USDG at 0x5fc5…d168: an owner address still controls it; it is an upgradeable proxy, so its code can change. Normal for a regulated stablecoin, and worth knowing before you hold it.</p></div></div>
+          <ul class="checks" id="checks">
+            <li class="ok"><span class="i">✓</span><span class="k">Contract code</span><span class="v">present (170 bytes)</span></li>
+            <li class="ok"><span class="i">✓</span><span class="k">Token basics</span><span class="v">Global Dollar (USDG) · 6 decimals · 627,544,907.12 supply</span></li>
+            <li class="ok"><span class="i">✓</span><span class="k">Source code</span><span class="v">verified on Sourcify (exact match)</span></li>
+            <li class="warn"><span class="i">!</span><span class="k">Owner</span><span class="v">0xcfa0388f5ddf905fdc08c45c716c15dc10a14c6f can still call owner-only functions</span></li>
+            <li class="warn"><span class="i">!</span><span class="k">Upgradeable</span><span class="v">proxy · logic at 0x68184c449e1a8f34fa18d289737129fd27b66f8f can be swapped</span></li>
+            <li class="na"><span class="i">i</span><span class="k">Pons launch</span><span class="v">not launched through Pons V2</span></li>
+            <li class="na"><span class="i">i</span><span class="k">Burned</span><span class="v">8,324.65 at 0x…dEaD (0.00% of supply)</span></li>
+            <li class="na"><span class="i">◌</span><span class="k">Buy and sell-back test</span><span class="v">next watch: a simulated buy and sell to catch hidden taxes</span></li>
+          </ul>
+          <div class="scanfoot" id="scanfoot">Saved example scan, block 117,972,051. Press the button for a live read.</div>
+        </div>
+      </div>
+
+      <div class="view" id="v-granary" hidden>
+        <div class="vh"><h3>Shield</h3><span>preview · contracts in development</span></div>
+        <div class="flowgrid">
+          <div class="steps" data-flow="granary"><div class="step"><span class="n">1</span><div><b>Approve</b><p>One signature allows exactly this deposit. No unlimited approvals.</p></div><span class="st">queued</span></div><div class="step"><span class="n">2</span><div><b>Seal</b><p>Amount and owner are sealed into a note only your key can open.</p></div><span class="st">queued</span></div><div class="step"><span class="n">3</span><div><b>Commit</b><p>A hash joins the pool. The chain sees the hash, never the amount.</p></div><span class="st">queued</span></div><div class="step"><span class="n">4</span><div><b>Private</b><p>Your private balance updates. Spend any amount, whenever you want.</p></div><span class="st">queued</span></div></div>
+          <div class="form"><div class="label">Example deposit</div><div class="row"><span>From</span><b>your wallet · 2,000 USDG</b></div><div class="row"><span>Amount</span><b>1,000 USDG</b></div><div class="row"><span>Pool</span><b>USDG · Robinhood Chain</b></div><div class="row"><span>Fee</span><b>none to shield</b></div>
+            <button class="btn primary go" type="button" data-run="granary">Shield privately</button>
+            <div class="result" id="r-granary">Example only. Nothing is deposited.</div></div>
+        </div>
+      </div>
+
+      <div class="view" id="v-market" hidden>
+        <div class="vh"><h3>Private send</h3><span>preview · contracts in development</span></div>
+        <div class="flowgrid">
+          <div class="steps" data-flow="market"><div class="step"><span class="n">1</span><div><b>Prove</b><p>Your browser proves you own a private note worth enough. No address is revealed.</p></div><span class="st">queued</span></div><div class="step"><span class="n">2</span><div><b>Relay</b><p>A relayer submits the payment and pays the gas, so your wallet never appears.</p></div><span class="st">queued</span></div><div class="step"><span class="n">3</span><div><b>Deliver</b><p>The recipient gets plain USDG from the pool.</p></div><span class="st">queued</span></div><div class="step"><span class="n">4</span><div><b>Change back</b><p>What is left becomes a fresh private note for you.</p></div><span class="st">queued</span></div></div>
+          <div class="form"><div class="label">Example payment</div><div class="row"><span>From</span><b>private balance · 1,250 USDG</b></div><div class="row"><span>To</span><b>0x9f3c…41e7</b></div><div class="row"><span>Amount</span><b>200 USDG</b></div><div class="row"><span>Relayer fee</span><b>0.06 USDG · from the note</b></div>
+            <button class="btn primary go" type="button" data-run="market">Send privately</button>
+            <div class="result" id="r-market">Example only. Nothing is sent.</div></div>
+        </div>
+      </div>
+
+      <div class="view" id="v-watch" hidden>
+        <div class="vh"><h3>Clean proof</h3><span>preview · contracts in development</span></div>
+        <div class="flowgrid">
+          <div class="steps" data-flow="watch"><div class="step"><span class="n">1</span><div><b>Pick a list</b><p>Choose the public block list to prove against, such as known hack and sanctioned addresses.</p></div><span class="st">queued</span></div><div class="step"><span class="n">2</span><div><b>Prove</b><p>Your browser proves your deposit is not in that list, without saying which deposit is yours.</p></div><span class="st">queued</span></div><div class="step"><span class="n">3</span><div><b>Share</b><p>You get a short proof to share with an exchange, a payer or anyone who asks.</p></div><span class="st">queued</span></div><div class="step"><span class="n">4</span><div><b>Check</b><p>They verify it on-chain in seconds. Your history stays private.</p></div><span class="st">queued</span></div></div>
+          <div class="form"><div class="label">Example proof</div><div class="row"><span>Prove against</span><b>public block list · Nov 2026</b></div><div class="row"><span>Your deposits</span><b>hidden</b></div><div class="row"><span>Result</span><b>not in the list</b></div><div class="row"><span>Valid until</span><b>the list changes</b></div>
+            <button class="btn primary go" type="button" data-run="watch">Make a clean proof</button>
+            <div class="result" id="r-watch">Example only. No proof is made.</div></div>
+        </div>
       </div>
     </div>
-    <div class="watchlog" aria-label="Last example watch">
-      <div>WATCH LOG · block <b>117,972,051</b></div>
-      <div>USDG     <b>look closer</b> · owner + upgradeable proxy</div>
-      <div>WETH     <b>look closer</b> · upgradeable proxy</div>
-      <div>beam     sweeping every 9 s</div>
-    </div>
-  </div>
-  <a class="descend" href="#light">SAIL IN<i></i></a>
-</header>
-
-<section class="bay" id="light"><div class="wrap">
-  <div class="side reveal">
-    <div class="num">I</div>
-    <h2>The Light</h2>
-    <p>Paste a token's contract address. The Light reads it straight from Robinhood Chain and Sourcify and tells you what it finds, in plain words. The beam turns the colour of the verdict.</p>
-    <span class="status live">Live: on-chain reads</span>
-    <div class="legend"><span class="g">Clear</span><span class="a">Look closer</span><span class="r">Stop</span></div>
-  </div>
-  <div class="scanner reveal" aria-live="polite"><div class="sweep" aria-hidden="true"></div>
-    <form class="scanbar" id="scanform">
-      <label for="ca">Token contract address</label>
-      <input id="ca" type="text" autocomplete="off" spellcheck="false" placeholder="0x… token contract on Robinhood Chain" value="0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168">
-      <button id="scan" type="submit">Shine the light</button>
-    </form>
-    <div class="presets"><span class="mono" style="font-size:13px;color:var(--mist);align-self:center">try:</span>
-      <button type="button" data-ca="0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168">USDG</button>
-      <button type="button" data-ca="0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73">WETH</button>
-      <button type="button" data-ca="0x000000000000000000000000000000000000dEaD">a wallet, not a token</button>
-    </div>
-    <div class="verdict"><div class="lamp" id="lamp" style="--v: var(--warn)"></div><div><h3 id="vtitle" style="--v: var(--warn)">Look closer</h3><p id="vtext">USDG at 0x5fc5…d168: an owner address still controls it; it is an upgradeable proxy, so its code can change. Normal for a regulated stablecoin, and worth knowing before you hold it.</p></div></div>
-    <ul class="checks" id="checks">
-      <li class="ok"><span class="i">✓</span><span class="k">Contract code</span><span class="v">present (170 bytes)</span></li>
-      <li class="ok"><span class="i">✓</span><span class="k">Token basics</span><span class="v">Global Dollar (USDG) · 6 decimals · 627,544,907.12 supply</span></li>
-      <li class="ok"><span class="i">✓</span><span class="k">Source code</span><span class="v">verified on Sourcify (exact match)</span></li>
-      <li class="warn"><span class="i">!</span><span class="k">Owner</span><span class="v">0xcfa0388f5ddf905fdc08c45c716c15dc10a14c6f can still call owner-only functions</span></li>
-      <li class="warn"><span class="i">!</span><span class="k">Upgradeable</span><span class="v">proxy · logic at 0x68184c449e1a8f34fa18d289737129fd27b66f8f can be swapped</span></li>
-      <li class="na"><span class="i">i</span><span class="k">Pons launch</span><span class="v">not launched through Pons V2</span></li>
-      <li class="na"><span class="i">i</span><span class="k">Burned</span><span class="v">8,324.65 at 0x…dEaD (0.00% of supply)</span></li>
-      <li class="na"><span class="i">◌</span><span class="k">Buy and sell-back test</span><span class="v">next watch: a simulated buy and sell to catch hidden taxes</span></li>
-    </ul>
-    <div class="scanfoot" id="scanfoot">Saved example scan, block 117,972,051. Press the button for a live read.</div>
   </div>
 </div></section>
 
-<section class="bay" id="market"><div class="wrap">
-  <div class="side reveal">
-    <div class="num">II</div>
-    <h2>The Market</h2>
-    <p>Post a job and lock the USDG for it. An AI agent picks it up and delivers. You release the payment when it's right, or it goes back to you when the deadline passes. Nobody holds the money but the contract.</p>
-    <span class="status build">Being built</span>
+<section class="band" id="buildings"><div class="wrap">
+  <div class="head reveal"><div class="label">What Lumwatch does</div><h2>Private where it matters. <em>Clean where it counts.</em></h2><p>Three moves, each doing a single job and showing you exactly what it did.</p></div>
+  <div class="buildings">
+    <div class="bld reveal"><canvas data-scene="granary" aria-hidden="true"></canvas><div class="in"><span class="num">1 · SHIELD</span><h3>Go private</h3><p>Move USDG or ETH into a private balance. The chain sees a hash join the pool, never your amount.</p><span class="st build">In development</span></div></div>
+    <div class="bld reveal"><canvas data-scene="market" aria-hidden="true"></canvas><div class="in"><span class="num">2 · SEND</span><h3>Pay anyone</h3><p>A relayer pays the gas and submits the payment, so nothing on-chain links it to your wallet.</p><span class="st build">In development</span></div></div>
+    <div class="bld reveal"><canvas data-scene="light" aria-hidden="true"></canvas><div class="in"><span class="num">3 · PROVE</span><h3>Stay clean</h3><p>Prove your funds are not from a public block list, without showing which deposit is yours.</p><span class="st build">In development</span></div></div>
   </div>
-  <div class="reveal" style="min-width:0">
-    <div class="flow" id="flow"><span class="coin" aria-hidden="true">$</span>
-      <div><i>step 1</i><b>Post</b><span>Describe the job, set a deadline, lock the USDG.</span></div>
-      <div><i>step 2</i><b>Claim</b><span>One agent takes it. Others see it's taken.</span></div>
-      <div><i>step 3</i><b>Deliver</b><span>The agent submits a link or a file hash.</span></div>
-      <div><i>step 4</i><b>Release</b><span>You approve and it pays. Missed deadline? It refunds.</span></div>
-    </div>
-    <div class="board">
-      <div class="head"><span>EXAMPLE BOARD · not live jobs</span><span>pays in USDG</span></div>
-      <div class="job"><b>Summarise 40 Robinhood Chain token launches into one table</b><span class="pay">12.00</span><span class="meta">deadline 24 h · delivery: CSV link</span><span class="st open">open</span></div>
-      <div class="job"><b>Translate the Lumwatch docs into Indonesian</b><span class="pay">25.00</span><span class="meta">deadline 3 days · delivery: Markdown file</span><span class="st work">claimed by an agent</span></div>
-      <div class="job"><b>Find every token whose creator sold within the first hour this week</b><span class="pay">8.00</span><span class="meta">deadline 12 h · delivery: list of addresses</span><span class="st done">paid</span></div>
-    </div>
+  <p class="muted" style="margin-top:22px;font-size:15px">Live today: the free <a href="#app" data-view="scan">token check</a>, reading Robinhood Chain and Sourcify.</p>
+</div></section>
+
+<section class="band" id="agents"><div class="wrap agents">
+  <div class="reveal"><div class="label">Agents &amp; CLI</div><h2 style="font-weight:800;font-size:clamp(36px,4.6vw,58px);line-height:1.02;margin-top:12px">Private payments <em style="font-style:normal;color:var(--lamp)">for agents too.</em></h2>
+    <p class="muted" style="font-size:18px;margin:16px 0 0">An agent that pays for APIs or data leaves a public trail of everything it buys. With Lumwatch it pays from a private balance, from a script or over MCP.</p>
+    <ul class="ticks"><li><div>Proofs on your device <span>· keys never leave the machine</span></div></li><li><div>Relayer pays gas <span>· the agent wallet never touches the payment</span></div></li><li><div>MCP server <span>· planned, so any agent host can call it</span></div></li></ul></div>
+  <div class="term reveal"><div class="bar"><i></i><i></i><i></i></div><pre id="cli"></pre></div>
+</div></section>
+
+<section class="band" id="how"><div class="wrap">
+  <div class="head reveal"><div class="label">How it works</div><h2>Four steps, <em>no trail.</em></h2><p>The design Lumwatch is being built on. Contracts will be published and verified on Sourcify before anything goes live.</p></div>
+  <div class="how reveal">
+    <div><i>1</i><b>Shield</b><span>Your deposit becomes a sealed note in a shared pool.</span></div>
+    <div><i>2</i><b>Prove</b><span>Your browser proves you own a note, without saying which one.</span></div>
+    <div><i>3</i><b>Relay</b><span>A relayer submits the payment and pays the gas.</span></div>
+    <div><i>4</i><b>Deliver</b><span>The recipient gets plain USDG. Nothing links the two sides.</span></div>
+  </div>
+  <div class="final reveal" style="margin-top:28px;padding:32px"><div style="max-width:60ch"><div class="label">The difference</div><h3 style="font-weight:800;font-size:clamp(26px,3vw,36px);margin-top:10px">Private is not the same as hidden from the rules.</h3><p class="muted" style="margin:12px 0 0">Anyone can prove their funds are not from a public list of hacks or sanctioned addresses, without revealing their own history. Privacy for you, a clear answer for whoever asks.</p></div></div>
+</div></section>
+
+<section class="band" id="faq"><div class="wrap">
+  <div class="head reveal"><div class="label">FAQ</div><h2>Before you <em>set sail.</em></h2></div>
+  <div class="reveal" style="max-width:860px">
+    <details class="q"><summary>Can I use private payments today?</summary><p>Not yet. Shield, Private send and Clean proof are in development. The app above is a walkthrough with example numbers. The token check is the only part that is live.</p></details>
+    <details class="q"><summary>Is this a mixer?</summary><p>It is a privacy pool with a clean proof built in. You can prove your funds are not from a public block list of hacks and sanctioned addresses, without showing which deposit is yours.</p></details>
+    <details class="q"><summary>Does Lumwatch hold my funds?</summary><p>No. The pool is a contract and only your key can open your notes. There is no admin who can move them.</p></details>
+    <details class="q"><summary>Which chain and tokens?</summary><p>Robinhood Chain first, with USDG and ETH. Other chains come later.</p></details>
+    <details class="q"><summary>When will it launch?</summary><p>When the contracts are written, audited, verified on Sourcify and tested on mainnet. The log below shows where each piece stands.</p></details>
+    <details class="q"><summary>Is there a token?</summary><p>If there is one, its contract address will be posted here and on our X account first. Anything else using the Lumwatch name is not us.</p></details>
   </div>
 </div></section>
 
-<section class="bay" id="granary"><div class="wrap">
-  <div class="side reveal">
-    <div class="num">III</div>
-    <h2>The Granary</h2>
-    <p>Put a little USDG away every day and lock it until a date you choose. No admin key, no early exit, no one who can move it but you, and only after the date. Try the numbers.</p>
-    <span class="status build">Being built</span>
+<section class="band" id="log"><div class="wrap">
+  <div class="head reveal"><div class="label">Harbour log</div><h2>What the keeper <em>does next.</em></h2></div>
+  <div class="how three reveal">
+    <div><i style="color:var(--safe)">✓</i><b>First watch</b><span>Free token check: code, source, owner, proxy, Pons launch and burns, live on mainnet.</span></div>
+    <div><i>2</i><b>Second watch</b><span>Shield and Private send contracts, written, audited and verified on Sourcify.</span></div>
+    <div><i>3</i><b>Third watch</b><span>Clean proof against public block lists. CLI and MCP server for agents.</span></div>
   </div>
-  <div class="reveal" style="min-width:0">
-    <div class="calc">
-      <div>
-        <label for="daily">Put away each day <output id="o-daily">5 USDG</output><input id="daily" type="range" min="1" max="100" step="1" value="5"></label>
-        <label for="days">For this many days <output id="o-days">90 days</output><input id="days" type="range" min="7" max="365" step="1" value="90"></label>
-        <label for="start">Starting <output id="o-start">today</output><input id="start" type="range" min="0" max="30" step="1" value="0"></label>
-      </div>
-      <div class="silo">
-        <span class="unit">in the granary at unlock</span>
-        <span class="big" id="total">450</span>
-        <span class="unit" id="unlock">USDG · opens on …</span>
-        <div class="grain" id="grain"><i id="fill"></i><em>365-day silo</em></div>
-      </div>
-    </div>
-    <div class="rules3">
-      <div><b>One unlock date</b><span>Set when you open the jar. It cannot move earlier.</span></div>
-      <div><b>No admin key</b><span>The contract has no owner who could pause or drain it.</span></div>
-      <div><b>Top up any time</b><span>Daily is the plan; extra USDG is always welcome.</span></div>
-    </div>
-  </div>
+  <div class="final reveal" style="margin-top:56px"><h2>Private. Provably clean.</h2><div class="cta" style="margin:0"><a class="btn primary" href="#app">See the preview</a><a class="btn" href="#faq">Read the FAQ</a></div></div>
 </div></section>
 
-<section class="bay" id="watches"><div class="wrap" style="grid-template-columns:minmax(0,1fr)">
-  <div class="side reveal" style="max-width:640px"><div class="label">The watches</div><h2 style="margin-top:10px">What the keeper does next</h2><p>A watch is a stretch of work on the lighthouse. Each one ends with something you can use on mainnet.</p></div>
-  <div class="watches">
-    <div class="watch reveal"><div class="t">First watch · now</div><h3>The Light</h3><ul><li>On-chain reads: code, token basics, owner, proxy, Pons launch, burns</li><li>Source check on Sourcify</li><li>Next: simulated buy and sell-back to catch hidden taxes</li></ul></div>
-    <div class="watch reveal"><div class="t">Second watch</div><h3>The Market</h3><ul><li>Escrow contract for USDG jobs, verified on Sourcify</li><li>An MCP tool so agents can find and claim jobs</li><li>Refund on missed deadlines</li></ul></div>
-    <div class="watch reveal"><div class="t">Third watch</div><h3>The Granary</h3><ul><li>Time-locked USDG jars with no admin key</li><li>Daily top-ups from your wallet</li><li>A shareable card when a jar opens</li></ul></div>
-  </div>
-</div></section>
-
-<footer><div class="wrap"><span>Lumwatch · Robinhood Chain mainnet · nothing here is financial advice</span><span class="mono">The Light reads public data only and never asks for a key.</span></div></footer>
+<footer><div class="wrap">
+  <div><a class="brand" href="#top" style="padding:0">Lumwatch</a><p class="muted" style="font-size:14px;margin:10px 0 0;max-width:34ch">Private payments on Robinhood Chain that stay provably clean. In development.</p></div>
+  <div><h4>Product</h4><a href="#app" data-view="granary">Shield</a><a href="#app" data-view="market">Private send</a><a href="#app" data-view="watch">Clean proof</a><a href="#app" data-view="scan">Token check</a></div>
+  <div><h4>Tools</h4><a href="#agents">Agents &amp; CLI</a><a href="#how">How it works</a></div>
+  <div><h4>Learn</h4><a href="#faq">FAQ</a><a href="#log">Harbour log</a></div>
+  <div class="fine"><span>© 2026 Lumwatch · Robinhood Chain mainnet</span><span>Nothing here is financial advice.</span></div>
+</div></footer>
 
 <script>
 (() => {
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const root = getComputedStyle(document.documentElement);
   const COL = { ok: root.getPropertyValue("--safe").trim(), warn: root.getPropertyValue("--warn").trim(), bad: root.getPropertyValue("--danger").trim(), lamp: root.getPropertyValue("--lamp").trim() };
-  let beam = COL.warn;
+  let beam = COL.lamp;
+  const hexA = (h, a) => { const n = parseInt(h.replace("#", ""), 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${Math.max(0, a).toFixed(3)})`; };
 
-  // ---- the harbour: stars, water, lighthouse and its sweeping beam ----
-  const cv = document.getElementById("sky"), cx = cv.getContext("2d");
+  // ---- curtain ----
+  const curtain = document.getElementById("curtain");
+  setTimeout(() => curtain.classList.add("gone"), still ? 0 : 1500);
+  curtain.addEventListener("click", () => curtain.classList.add("gone"));
+
+  // ---- nav dropdowns ----
+  const dds = [...document.querySelectorAll(".dd")];
+  dds.forEach((d) => d.querySelector("button").addEventListener("click", (e) => { e.stopPropagation(); const o = !d.classList.contains("open"); dds.forEach((x) => { x.classList.remove("open"); x.querySelector("button").setAttribute("aria-expanded", "false"); }); if (o) { d.classList.add("open"); d.querySelector("button").setAttribute("aria-expanded", "true"); } }));
+  document.addEventListener("click", () => dds.forEach((x) => x.classList.remove("open")));
+  const nav = document.getElementById("nav");
+  document.getElementById("burger").addEventListener("click", (e) => { e.stopPropagation(); nav.classList.toggle("open"); e.target.setAttribute("aria-expanded", nav.classList.contains("open")); });
+
+  // ---- the voyage: pinned scene, the lighthouse grows as you sail in ----
+  const cv = document.getElementById("sky"), cx = cv.getContext("2d"), voyage = document.querySelector(".voyage");
   let W = 0, H = 0, stars = [];
   function size() {
     const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
     W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0);
-    stars = Array.from({ length: Math.round(W * H / 5000) }, () => ({ x: Math.random() * W, y: Math.random() * H * .62, r: Math.random() * 1.2 + .2, p: Math.random() * 6 }));
+    stars = Array.from({ length: Math.round(W * H / 4200) }, () => ({ x: Math.random() * W, y: Math.random() * H * .6, r: Math.random() * 1.3 + .2, p: Math.random() * 6 }));
   }
+  const prog = () => { const r = voyage.getBoundingClientRect(); return Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight))); };
+  const phases = [...document.querySelectorAll(".phase")], dots = [...document.querySelectorAll(".depth span")];
+  let lastPhase = -1;
   function draw(t) {
-    const g = cx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#050c14"); g.addColorStop(.62, "#0b1a28"); g.addColorStop(.63, "#0a1724"); g.addColorStop(1, "#08121c");
+    const p = still ? 0 : prog();
+    const ph = p < .33 ? 0 : p < .7 ? 1 : 2;
+    if (ph !== lastPhase) { phases.forEach((el, i) => el.classList.toggle("off", i !== ph)); dots.forEach((d, i) => d.classList.toggle("on", i === ph)); lastPhase = ph; }
+    const horizon = H * (.64 + p * .06);
+    const g = cx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#dfe9f8"); g.addColorStop(horizon / H, "#f6f4ef"); g.addColorStop(Math.min(1, horizon / H + .002), "#cddcf2"); g.addColorStop(1, "#e9eff8");
     cx.fillStyle = g; cx.fillRect(0, 0, W, H);
-    const sc = Math.min(1, scrollY / Math.max(1, H)); // sailing in: the tower grows and the sky drifts as you scroll
-    for (const s of stars) { const sy = s.y - sc * 60; cx.globalAlpha = .35 + .35 * Math.sin(t / 900 + s.p); cx.fillStyle = "#cfdae3"; cx.beginPath(); cx.arc(s.x, sy, s.r, 0, 7); cx.fill(); }
+    for (const s of stars) { if (s.r < 1.1) continue; cx.globalAlpha = .18 + .1 * Math.sin(t / 1400 + s.p); cx.fillStyle = "#ffffff"; cx.beginPath(); cx.ellipse((s.x + t / 60 * s.r) % (W + 120) - 60, s.y * .7 - p * 60, 40 * s.r, 9 * s.r, 0, 0, 7); cx.fill(); }
     cx.globalAlpha = 1;
-    const lx = W > 860 ? W * .82 : W * .86, horizon = H * .62 + sc * 30, top = horizon - Math.min(260, H * .5) * (1 + sc * .35);
-    // beam: a slow sweep, brighter when it faces the viewer
-    const a = still ? -0.5 : (t / 9000) * Math.PI * 2;
-    const face = (Math.cos(a) + 1) / 2;
-    const len = Math.max(W, H) * 1.3, spread = .09;
-    const dir = Math.sin(a) >= 0 ? 1 : -1, ang = Math.PI + (Math.cos(a) * .9) * dir;
-    const bx = lx, by = top + 14;
-    const grad = cx.createRadialGradient(bx, by, 4, bx, by, len);
-    grad.addColorStop(0, hexA(beam, .55 * (.35 + .65 * face))); grad.addColorStop(1, hexA(beam, 0));
-    cx.fillStyle = grad; cx.beginPath(); cx.moveTo(bx, by); cx.arc(bx, by, len, ang - spread, ang + spread); cx.closePath(); cx.fill();
-    // reflection on the water
-    const rg = cx.createLinearGradient(lx, horizon, lx, H); rg.addColorStop(0, hexA(beam, .28 * face + .06)); rg.addColorStop(1, hexA(beam, 0));
-    cx.fillStyle = rg; cx.fillRect(lx - 14, horizon, 28, H - horizon);
-    // tower
-    cx.fillStyle = "#cfdae3"; cx.beginPath(); cx.moveTo(lx - 18, horizon); cx.lineTo(lx - 9, top + 26); cx.lineTo(lx + 9, top + 26); cx.lineTo(lx + 18, horizon); cx.fill();
-    cx.fillStyle = "#1b2c3c"; for (let k = 1; k < 4; k++) cx.fillRect(lx - 18 + k * 2.2, horizon - k * (horizon - top - 26) / 4, 36 - k * 4.4, 7);
-    cx.fillStyle = beam; cx.shadowColor = beam; cx.shadowBlur = 24 * (.4 + face); cx.fillRect(lx - 10, top + 8, 20, 16); cx.shadowBlur = 0;
-    cx.fillStyle = "#cfdae3"; cx.beginPath(); cx.moveTo(lx - 13, top + 8); cx.lineTo(lx, top - 6); cx.lineTo(lx + 13, top + 8); cx.fill();
-    // quay
-    cx.fillStyle = "#0f1e2c"; cx.fillRect(0, horizon - 6, lx - 30, 6);
+    // moon
+    const sun = cx.createRadialGradient(W * .2, H * .26 - p * 60, 10, W * .2, H * .26 - p * 60, 180); sun.addColorStop(0, "rgba(255,214,150,.75)"); sun.addColorStop(1, "rgba(255,214,150,0)"); cx.fillStyle = sun; cx.fillRect(0, 0, W, H);
+    // lighthouse: grows and centres as you sail in
+    const narrow = W < 700; const scale = narrow ? .55 + p * .25 : 1 + p * 1.1, lx = W * (narrow ? .9 : .88 - p * .06), towerH = Math.min(280, H * .42) * scale; cx.globalAlpha = narrow ? .55 : 1;
+    const top = horizon - towerH, wB = 30 * scale, wT = 16 * scale;
+    const a = still ? -0.6 : (t / 8000) * Math.PI * 2, face = (Math.cos(a) + 1) / 2;
+    const len = Math.max(W, H) * 1.5, spread = .08 + p * .04, dir = Math.sin(a) >= 0 ? 1 : -1, ang = Math.PI + (Math.cos(a) * .95) * dir;
+    const by = top + 18 * scale, gr = cx.createRadialGradient(lx, by, 4, lx, by, len);
+    gr.addColorStop(0, hexA(beam, .32 * (.3 + .7 * face))); gr.addColorStop(1, hexA(beam, 0));
+    cx.fillStyle = gr; cx.beginPath(); cx.moveTo(lx, by); cx.arc(lx, by, len, ang - spread, ang + spread); cx.closePath(); cx.fill();
+    // water lines + reflection
+    for (let k = 0; k < 18; k++) { const y = horizon + 6 + k * k * 1.6; if (y > H) break; cx.strokeStyle = `rgba(31,94,255,${.14 - k * .006})`; cx.beginPath(); for (let x = 0; x <= W; x += 24) cx.lineTo(x, y + Math.sin(x / 60 + t / 700 + k) * (1 + k * .2)); cx.stroke(); }
+    const rg = cx.createLinearGradient(lx, horizon, lx, H); rg.addColorStop(0, hexA(beam, .18 * face + .04)); rg.addColorStop(1, hexA(beam, 0));
+    cx.fillStyle = rg; cx.fillRect(lx - 16 * scale, horizon, 32 * scale, H - horizon);
+    cx.fillStyle = "#ffffff"; cx.strokeStyle = "#111418"; cx.lineWidth = 1.5; cx.beginPath(); cx.moveTo(lx - wB, horizon); cx.lineTo(lx - wT, top + 30 * scale); cx.lineTo(lx + wT, top + 30 * scale); cx.lineTo(lx + wB, horizon); cx.fill(); cx.stroke();
+    cx.fillStyle = "#d23b2b"; for (let k = 1; k < 4; k++) { const yy = horizon - k * (horizon - top - 30 * scale) / 4, ww = wB - (wB - wT) * k / 4; cx.fillRect(lx - ww, yy, ww * 2, 8 * scale); }
+    cx.fillStyle = beam; cx.shadowColor = beam; cx.shadowBlur = 30 * (.4 + face); cx.fillRect(lx - 11 * scale, top + 10 * scale, 22 * scale, 18 * scale); cx.shadowBlur = 0;
+    cx.fillStyle = "#111418"; cx.beginPath(); cx.moveTo(lx - 15 * scale, top + 10 * scale); cx.lineTo(lx, top - 6 * scale); cx.lineTo(lx + 15 * scale, top + 10 * scale); cx.fill();
+    cx.globalAlpha = 1;
+    // the quay with three lit buildings appears in the last phase
+    const q = Math.max(0, (p - .6) / .4);
+    if (q > 0) { cx.globalAlpha = q; cx.fillStyle = "#c9c2b4"; cx.fillRect(0, horizon - 8, W * .55, 8);
+      [[.08, 60, 40], [.22, 80, 54], [.38, 70, 46]].forEach(([fx, bh, bw]) => { const x = W * fx; cx.fillStyle = "#ffffff"; cx.strokeStyle = "#111418"; cx.lineWidth = 1.5; cx.strokeRect(x, horizon - 8 - bh, bw, bh); cx.fillRect(x, horizon - 8 - bh, bw, bh); cx.fillStyle = hexA(COL.lamp, .8); for (let r = 0; r < 3; r++) cx.fillRect(x + 8 + r * (bw - 16) / 3, horizon - bh + 4, 6, 8); });
+      cx.globalAlpha = 1; }
     if (!still) requestAnimationFrame(draw);
   }
-  function hexA(h, a) { const n = parseInt(h.replace("#", ""), 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${Math.max(0, a).toFixed(3)})`; }
   size(); addEventListener("resize", size); requestAnimationFrame(draw);
+
+  // ---- app window views (hash-free so the page stays one link) ----
+  const tabs = [...document.querySelectorAll(".side button")];
+  function show(v) {
+    tabs.forEach((b) => b.setAttribute("aria-selected", b.dataset.view === v ? "true" : "false"));
+    document.querySelectorAll(".view").forEach((el) => (el.hidden = el.id !== "v-" + v));
+    document.getElementById("appurl").textContent = "lumwatch.app/app · " + ({ overview: "overview", scan: "token check", market: "private send", granary: "shield", watch: "clean proof" })[v];
+    if (["market", "granary", "watch"].includes(v)) runFlow(v);
+  }
+  tabs.forEach((b) => b.addEventListener("click", () => show(b.dataset.view)));
+  document.querySelectorAll("a[data-view]").forEach((a) => a.addEventListener("click", () => show(a.dataset.view)));
+
+  // ---- pipelines: queued → working → done, one step at a time ----
+  const LABELS = { market: [["building proof…", "proved · 1.4 s"], ["submitting…", "gas paid"], ["settling…", "delivered"], ["sealing…", "1,050 USDG private"]],
+    granary: [["signing…", "approved"], ["sealing…", "note built"], ["adding…", "leaf 4,821"], ["updating…", "+1,000 USDG private"]],
+    watch: [["loading…", "list · Nov 2026"], ["building proof…", "proved · 2.1 s"], ["packing…", "proof ready"], ["verifying…", "valid on-chain"]] };
+  const DONE = { market: "Sent · nothing on-chain links you to 0x9f3c…41e7 (example)", granary: "Shielded · +1,000 USDG in your private balance (example)", watch: "Clean proof ready · not in the block list, history still private (example)" };
+  const timers = {};
+  function runFlow(name) {
+    clearTimeout(timers[name]);
+    const steps = [...document.querySelectorAll(`[data-flow="${name}"] .step`)], res = document.getElementById("r-" + name);
+    steps.forEach((s) => { s.className = "step"; s.querySelector(".st").textContent = "queued"; });
+    res.className = "result"; res.textContent = "Running the example…";
+    let i = 0;
+    const tick = () => {
+      if (i > 0) { const d = steps[i - 1]; d.className = "step done"; d.querySelector(".st").textContent = LABELS[name][i - 1][1]; }
+      if (i === steps.length) { res.className = "result ok"; res.textContent = DONE[name]; timers[name] = setTimeout(() => runFlow(name), 6000); return; }
+      const s = steps[i]; s.className = "step run"; s.querySelector(".st").textContent = LABELS[name][i][0]; i++;
+      timers[name] = setTimeout(tick, still ? 0 : 1100);
+    };
+    tick();
+  }
+  document.querySelectorAll("[data-run]").forEach((b) => b.addEventListener("click", () => runFlow(b.dataset.run)));
+
+  // ---- overview: an example watch log that keeps moving ----
+  const feed = document.getElementById("feed"), bars = document.getElementById("bars");
+  const SAMPLE = [["ok", "SHIELDED", "+500 USDG into the pool"], ["ok", "SENT", "120 USDG · relayer paid gas"], ["ok", "PROOF", "clean proof shared"], ["ok", "SENT", "45 USDG · relayer paid gas"], ["ok", "SHIELDED", "+0.20 ETH into the pool"], ["ok", "CHANGE", "fresh note · 335 USDG"]];
+  let fi = 0;
+  function pushFeed() {
+    const [c, v, why] = SAMPLE[fi++ % SAMPLE.length], d = document.createElement("div"), now = new Date();
+    d.innerHTML = `<span class="t"></span><span></span><span class="${c}"></span>`;
+    d.children[0].textContent = now.toTimeString().slice(0, 8); d.children[1].textContent = why; d.children[2].textContent = v;
+    feed.prepend(d); while (feed.children.length > 6) feed.lastChild.remove();
+  }
+  for (let k = 0; k < 6; k++) pushFeed();
+  if (!still) setInterval(pushFeed, 2600);
+  for (let k = 0; k < 24; k++) { const b = document.createElement("i"); b.style.height = (20 + Math.round(70 * Math.abs(Math.sin(k / 3.2)) + (k % 5) * 3)) + "%"; bars.append(b); }
+  if (!still) setInterval(() => [...bars.children].forEach((b) => (b.style.height = Math.max(8, Math.min(100, parseFloat(b.style.height) + (Math.random() * 20 - 10))) + "%")), 3000);
+
+  // ---- building scenes ----
+  const scenes = [...document.querySelectorAll("canvas[data-scene]")];
+  function sceneSize(c) { const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); c.width = r.width * d; c.height = r.height * d; const x = c.getContext("2d"); x.setTransform(d, 0, 0, d, 0, 0); c._w = r.width; c._h = r.height; }
+  scenes.forEach(sceneSize); addEventListener("resize", () => scenes.forEach(sceneSize));
+  const grains = Array.from({ length: 40 }, () => ({ x: Math.random(), y: Math.random(), v: .4 + Math.random() * .6 }));
+  function scene(t) {
+    for (const c of scenes) {
+      const x = c.getContext("2d"), w = c._w, h = c._h; x.clearRect(0, 0, w, h);
+      x.fillStyle = "#eef1f6"; x.fillRect(0, 0, w, h);
+      if (c.dataset.scene === "light") {
+        const rows = 6; for (let r = 0; r < rows; r++) { const y = 26 + r * 26; x.fillStyle = "#ffffff"; x.fillRect(30, y, w - 60, 16); }
+        const sx = 30 + ((t / 18) % (w - 60)); const gg = x.createLinearGradient(sx - 60, 0, sx + 10, 0); gg.addColorStop(0, "rgba(31,94,255,0)"); gg.addColorStop(1, "rgba(31,94,255,.3)");
+        x.fillStyle = gg; x.fillRect(sx - 60, 18, 70, rows * 26); x.fillStyle = COL.lamp; x.fillRect(sx, 18, 2, rows * 26);
+        for (let r = 0; r < rows; r++) { const y = 26 + r * 26; if (sx > w - 70) { x.fillStyle = [COL.ok, COL.ok, COL.warn, COL.ok, COL.warn, COL.ok][r]; x.beginPath(); x.arc(w - 46, y + 8, 5, 0, 7); x.fill(); } }
+      } else if (c.dataset.scene === "market") {
+        const n = 4, gap = (w - 60) / (n - 1); for (let i = 0; i < n; i++) { const cxp = 30 + i * gap; x.fillStyle = "#ffffff"; x.fillRect(cxp - 22, h - 70, 44, 40); x.fillStyle = "#c9d6ee"; x.beginPath(); x.moveTo(cxp - 28, h - 70); x.lineTo(cxp, h - 92); x.lineTo(cxp + 28, h - 70); x.fill(); }
+        const ph = (t / 1100) % n, i = Math.floor(ph), f = ph - i, from = 30 + i * gap, to = 30 + Math.min(n - 1, i + 1) * gap;
+        const px = i < n - 1 ? from + (to - from) * f : to, py = h - 110 - Math.sin(f * Math.PI) * 30;
+        x.fillStyle = COL.lamp; x.shadowColor = COL.lamp; x.shadowBlur = 16; x.beginPath(); x.arc(px, py, 8, 0, 7); x.fill(); x.shadowBlur = 0;
+        x.fillStyle = "#5d6573"; x.font = "11px JetBrains Mono, monospace"; ["prove", "relay", "deliver", "change"].forEach((l, k) => { x.textAlign = "center"; x.fillText(l, 30 + k * gap, h - 14); });
+      } else {
+        const sw = Math.min(110, w * .35), sx0 = w / 2 - sw / 2, top = 30, bot = h - 20;
+        const lvl = ((t / 60) % 100) / 100, fy = bot - (bot - top - 20) * lvl;
+        x.fillStyle = "#ffffff"; x.fillRect(sx0, top + 20, sw, bot - top - 20); x.beginPath(); x.moveTo(sx0 - 6, top + 20); x.lineTo(w / 2, top - 4); x.lineTo(sx0 + sw + 6, top + 20); x.fill();
+        x.fillStyle = "rgba(31,94,255,.75)"; x.fillRect(sx0 + 4, fy, sw - 8, bot - fy);
+        for (const gpt of grains) { gpt.y += gpt.v * .012; if (gpt.y > 1) { gpt.y = 0; gpt.x = Math.random(); } const gx = sx0 + 8 + gpt.x * (sw - 16), gy = top + 20 + gpt.y * (fy - top - 20); x.fillStyle = COL.lamp; x.fillRect(gx, gy, 3, 3); }
+        x.fillStyle = "#5d6573"; x.font = "11px JetBrains Mono, monospace"; x.textAlign = "left"; x.fillText(`pool · ${Math.round(lvl * 4821)} notes`, 12, 18);
+      }
+    }
+    if (!still) requestAnimationFrame(scene);
+  }
+  requestAnimationFrame(scene);
+
+  // ---- CLI typing ----
+  const CLI = [["c", "# pay an API privately from a script"], ["p", "$ lumwatch send 25 USDG --to 0x9f3c…41e7"], ["", "  proof    built on this device · 1.4 s"], ["g", "  ✓ relay  gas paid by the relayer"], ["g", "  ✓ sent   25 USDG delivered"], ["g", "  ✓ change 1,225 USDG back as a private note"], ["", ""], ["p", "$ lumwatch prove --list public-blocklist"], ["g", "  ✓ clean  not in the list · proof copied"], ["c", "  (example output; CLI ships in the third watch)"]];
+  const cli = document.getElementById("cli");
+  function typeCli() { cli.textContent = ""; let i = 0; const next = () => { if (i >= CLI.length) { setTimeout(typeCli, 5000); return; } const [c, txt] = CLI[i++]; const s = document.createElement("span"); if (c) s.className = c; s.textContent = txt + "\n"; cli.append(s); setTimeout(next, still ? 0 : 380); }; next(); }
+  if (still) CLI.forEach(([c, txt]) => { const s = document.createElement("span"); if (c) s.className = c; s.textContent = txt + "\n"; cli.append(s); }); else typeCli();
+
+  // ---- sections rise as you sail in (readable at rest) ----
+  if (!still && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.remove("pre"); io.unobserve(e.target); } }), { threshold: .1 });
+    document.querySelectorAll(".reveal").forEach((el) => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pre"); io.observe(el); } });
+  }
 
   // ---- I: the Light, live reads from Robinhood Chain and Sourcify ----
   const RPC = "https://rpc.mainnet.chain.robinhood.com", SOURCIFY = "https://sourcify.dev/server/v2/contract/4663/";
@@ -457,32 +745,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   });
   document.querySelectorAll("[data-ca]").forEach((b) => b.addEventListener("click", () => { $("ca").value = b.dataset.ca; $("scanform").requestSubmit(); }));
 
-  // ---- II: the coin walks the steps; the board lights a job ----
-  if (!still) {
-    const steps = [...document.querySelectorAll("#flow > div")], jobs = [...document.querySelectorAll(".job")];
-    let k = 0;
-    setInterval(() => { steps.forEach((d, i) => d.classList.toggle("lit", i === k % 4)); if (k % 4 === 3) { const j = jobs[(k / 4 | 0) % jobs.length]; j.classList.add("flash"); setTimeout(() => j.classList.remove("flash"), 900); } k++; }, 2000);
-    const g = document.getElementById("grain");
-    for (let i = 0; i < 14; i++) { const b = document.createElement("b"); b.style.left = (20 + Math.random() * 60) + "%"; b.style.animationDelay = (Math.random() * 1.6) + "s"; b.style.animationDuration = (1.2 + Math.random() * .8) + "s"; g.append(b); }
-  }
 
-  // ---- III: the Granary calculator ----
-  const fmt = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
-  function calc() {
-    const daily = +$("daily").value, days = +$("days").value, start = +$("start").value;
-    $("o-daily").textContent = daily + " USDG"; $("o-days").textContent = days + " days"; $("o-start").textContent = start ? `in ${start} day${start > 1 ? "s" : ""}` : "today";
-    $("total").textContent = (daily * days).toLocaleString("en-US");
-    const open = new Date(); open.setDate(open.getDate() + start + days);
-    $("unlock").textContent = `USDG · opens on ${fmt.format(open)}`;
-    $("fill").style.height = Math.min(100, days / 365 * 100) + "%";
-  }
-  ["daily", "days", "start"].forEach((id) => $(id).addEventListener("input", calc)); calc();
-
-  // ---- sections rise as you sail in (always readable at rest) ----
-  if (!still && "IntersectionObserver" in window) {
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.remove("pre"); io.unobserve(e.target); } }), { threshold: .12 });
-    document.querySelectorAll(".reveal").forEach((el) => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pre"); io.observe(el); } });
-  }
 })();
 </script>
 

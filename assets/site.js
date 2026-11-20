@@ -404,3 +404,10 @@
     line("agent", "Hi, I'm the Lumwatch agent. Ask me to check a token, read your balance, or try shield, send and prove. Type help for the list.");
   }
 })();
+
+// copy the contract address from the top bar
+document.addEventListener("click", (e) => {
+  const b = e.target.closest && e.target.closest(".ca-copy"); if (!b) return;
+  const t = b.getAttribute("data-copy"); const done = () => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy"), 1500); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, () => {}); else { const r = document.createRange(); const c = document.getElementById("ca-full"); if (c) { r.selectNodeContents(c); const s = getSelection(); s.removeAllRanges(); s.addRange(r); } }
+});
